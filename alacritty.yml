@@ -19,7 +19,7 @@ key_bindings:
   - { key: Return,   mods: Control|Shift, action: SpawnNewInstance }
 
 shell:
-  program: /bin/fish
+  program: /bin/zsh
 
 # Inserted by this[https://github.com/egeesin/alacritty-color-export] script
 # BEGIN ACE
