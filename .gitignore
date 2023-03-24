@@ -34,3 +34,7 @@ Dockerfile
 extras
 font-info.md
 readme.md
+.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml
+Downloads
+.local/share/recently-used.xbel
+.zsh_history
