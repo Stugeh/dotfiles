@@ -1,8 +1,0 @@
-amixer: Unable to find simple control 'Master',0
-
-cat: /sys/class/power_supply/BAT0/capacity: No such file or directory
-[ 24.03.2023 21:16:19.521 parse_config_libconfig WARN ] The refresh-rate option has been deprecated. Please remove it from your configuration file. If you encounter any problems without this feature, please feel free to open a bug report
- -> request failed: Get "https://aur.archlinux.org/rpc?arg%5B%5D=leftwm&arg%5B%5D=leftwm-theme-git&type=info&v=5": dial tcp: lookup aur.archlinux.org: Temporary failure in name resolution
-amixer: Unable to find simple control 'Master',0
-
-Welcome app is disabled. To start it anyway, use option --enable (temporarily: --once).
