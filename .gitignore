@@ -19,6 +19,7 @@
 !.config/.polybar/**
 !.config/nvim/lua/**
 !.config/nvim/init.lua
+!.config/nvim/.stylua.toml
 !.config/xmonad/**
 !.config/qtile/**
 !.config/rofi/**
