@@ -1,5 +1,3 @@
-*
-!*/
 
 !./.gitignore
 !.bashrc
@@ -11,6 +9,9 @@
 !picom.conf
 !alacritty.yml
 !.config/bspwm/**
+!.config/**
+!.config/**/**
+!.config
 !.config/i3/**
 !.config/kitty/**
 !.config/leftwm/**
