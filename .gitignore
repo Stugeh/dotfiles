@@ -26,3 +26,4 @@
 !.config/rofi/**
 !.config/lvim/**
 
+.config/lazygit
