@@ -56,7 +56,9 @@ require('lazy').setup({
     dependencies = {
       { 'williamboman/mason.nvim', config = true },
       'williamboman/mason-lspconfig.nvim',
-      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+      {
+        'j-hui/fidget.nvim', tag = 'legacy', opts = {}
+      },
       'folke/neodev.nvim',
     },
   },
@@ -115,13 +117,13 @@ require('lazy').setup({
     'norcalli/nvim-colorizer.lua',
     config = function()
       require('colorizer').setup({ 'css', 'scss', 'html', 'javascript' }, {
-        RGB = true, -- #RGB hex codes
-        RRGGBB = true, -- #RRGGBB hex codes
+        RGB = true,      -- #RGB hex codes
+        RRGGBB = true,   -- #RRGGBB hex codes
         RRGGBBAA = true, -- #RRGGBBAA hex codes
-        rgb_fn = true, -- CSS rgb() and rgba() functions
-        hsl_fn = true, -- CSS hsl() and hsla() functions
-        css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-        css_fn = true, -- Enable all CSS *functions*: rub_fn, hsl_fn
+        rgb_fn = true,   -- CSS rgb() and rgba() functions
+        hsl_fn = true,   -- CSS hsl() and hsla() functions
+        css = true,      -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+        css_fn = true,   -- Enable all CSS *functions*: rub_fn, hsl_fn
       })
     end,
   },
@@ -222,14 +224,18 @@ require('lazy').setup({
       show_trailing_blankline_indent = false,
     },
   },
-  { 'numToStr/Comment.nvim', opts = {
-    toggler = {
-      line = '/',
+  {
+    'numToStr/Comment.nvim',
+    opts = {
+      toggler = {
+        line = '<leader>/',
+      },
+      opleader = {
+        line = '<leader>/',
+      },
     },
-    opleader = {
-      line = '/',
-    },
-  }, lazy = false },
+    lazy = false,
+  },
   -- Fuzzy Finder (files, lsp, etc)
   {
     'nvim-telescope/telescope.nvim',
@@ -277,6 +283,7 @@ vim.o.updatetime = 250
 vim.o.timeoutlen = 150
 vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
+vim.o.wrap = false
 
 -- [[ Basic Keymaps ]]
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
