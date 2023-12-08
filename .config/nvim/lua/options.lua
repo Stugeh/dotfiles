@@ -3,11 +3,25 @@ WarningIcon = '▲'
 HintIcon = ''
 InfoIcon = ''
 
+local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system {
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable', -- latest stable release
+    lazypath,
+  }
+end
+vim.opt.rtp:prepend(lazypath)
+
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.opt.termguicolors = true
+vim.g.linewrap = false
 
 vim.o.hlsearch = true
 vim.wo.number = true
@@ -46,9 +60,9 @@ vim.diagnostic.config {
     active = true,
     values = {
       { name = 'DiagnosticSignError', text = ErrorIcon },
-      { name = 'DiagnosticSignWarn', text = WarningIcon },
-      { name = 'DiagnosticSignHint', text = HintIcon },
-      { name = 'DiagnosticSignInfo', text = InfoIcon },
+      { name = 'DiagnosticSignWarn',  text = WarningIcon },
+      { name = 'DiagnosticSignHint',  text = HintIcon },
+      { name = 'DiagnosticSignInfo',  text = InfoIcon },
     },
   },
 }
@@ -58,6 +72,32 @@ local sign = function(opts)
     text = opts.text,
     numhl = '',
   })
+end
+
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = '*',
+})
+
+local function diagnostics_indicator(_, _, diagnostics, _)
+  local result = {}
+  local symbols = {
+    error = '',
+    warning = '',
+    info = '',
+  }
+
+  for name, count in pairs(diagnostics) do
+    if symbols[name] and count > 0 then
+      table.insert(result, symbols[name] .. ' ' .. count)
+    end
+  end
+  result = table.concat(result, ' ')
+  return #result > 0 and result or ''
 end
 
 sign { name = 'DiagnosticSignError', text = ErrorIcon }
