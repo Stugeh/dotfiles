@@ -1,0 +1,82 @@
+
+*{
+  font: "LiterationMono 13";
+  bg0:    #000000AF;
+  bg1:    #000000AF;
+  bg2:    #222222;
+
+  fg0:    white;
+  fg1:    white;
+  fg2:    white;
+
+  background-color:   transparent;
+  text-color:         @fg0;
+
+  margin:     0;
+  padding:    0;
+  spacing:    0;
+}
+
+window {
+    background-color:   @bg0;
+    location:       center;
+    width:          440;
+    border-radius:  8;
+    border-color: #AAAAAA;
+    border: 2;
+    padding: 5px 10px;
+}
+
+inputbar {
+    padding:    12px;
+    text-color: white;
+    spacing:    12px;
+    children:   [ icon-search, entry ];
+}
+
+icon-search {
+    expand:     false;
+    filename:   "search";
+    size: 28px;
+}
+
+icon-search, entry, element-text {
+    vertical-align: 0.5;
+}
+
+element-text{
+padding: 20px 20px;
+}
+
+entry {
+    font:   inherit;
+    placeholder         : "Search";
+    placeholder-color   : #FFFFFF;
+    text-color: #FFFFFF;
+}
+
+message {
+    background-color:   @bg1;
+}
+
+textbox {
+    padding:    8px 24px;
+}
+
+listview {
+    lines:      5;
+    columns:    1;
+    fixed-height:   false;
+}
+
+
+element selected normal, element selected active {
+    background-color:   @bg2;
+    text-color:         @fg1;
+}
+
+element-icon {
+    size:   1.8em;
+}
+
+
