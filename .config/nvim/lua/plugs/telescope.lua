@@ -11,7 +11,7 @@ return {
       end,
     },
   },
-  config = function(plug)
+  config = function()
     require('telescope').setup {
       defaults = {
         mappings = {
@@ -35,7 +35,7 @@ return {
         current_dir = vim.fn.fnamemodify(current_file, ':h')
       end
       local git_root = vim.fn.systemlist('git -C ' .. vim.fn.escape(current_dir, ' ') .. ' rev-parse --show-toplevel')
-      [1]
+          [1]
       if vim.v.shell_error ~= 0 then
         print 'Not a git repository. Searching on current working directory'
         return cwd
@@ -52,6 +52,13 @@ return {
       end
     end
 
+    local function search_config_files()
+      require('telescope.builtin').find_files {
+        search_dirs = { "~/.config/nvim" }
+      }
+    end
+
     vim.api.nvim_create_user_command('LiveGrepGitRoot', live_grep_git_root, {})
+    vim.api.nvim_create_user_command('SearchConfigFiles', search_config_files, {})
   end
 }

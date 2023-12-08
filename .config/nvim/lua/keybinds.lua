@@ -39,6 +39,7 @@ vim.keymap.set('n', '<leader>f', require('telescope.builtin').find_files, { desc
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = 'Search current word' })
 vim.keymap.set('n', '<leader>st', require('telescope.builtin').live_grep, { desc = 'Search text' })
 vim.keymap.set('n', '<leader>sT', ':LiveGrepGitRoot<cr>', { desc = 'Search by text from git Root' })
+vim.keymap.set('n', '<leader>sc', ':SearchConfigFiles<cr>', { desc = 'Search config files' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = 'Search diagnostics' })
 vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 'Search resume' })
 vim.keymap.set('n', '<leader>/', function()
