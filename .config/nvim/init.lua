@@ -22,18 +22,15 @@ require('lazy').setup({
   require 'plugs.bufferline',
   -- require 'plugs.ChatGPT',
   require 'plugs.nvim_tree',
+  require 'plugs.leap',
+  require 'plugs.autopairs',
 
   require 'theme',
 
   {
-    'windwp/nvim-autopairs',
-    event = 'InsertEnter',
-  },
-  {
     'altermo/ultimate-autopair.nvim',
     event = { 'InsertEnter', 'CmdlineEnter' },
   },
-
   {
     'David-Kunz/gen.nvim',
     config = function()
