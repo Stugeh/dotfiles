@@ -10,7 +10,6 @@ require('lazy').setup({
   require 'lsp.mason',
   require 'lsp.lspconfig',
   require 'lsp.treesitter',
-  require 'lsp.autoformat',
 
   require 'plugs.lazygit',
   require 'plugs.toggleterm',
