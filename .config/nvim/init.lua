@@ -22,6 +22,17 @@ require('lazy').setup({
     },
   },
   {
+    'pwntester/octo.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+      'nvim-tree/nvim-web-devicons',
+    },
+    config = function()
+      require "octo".setup()
+    end
+  },
+  {
     'akinsho/toggleterm.nvim',
     version = '*',
     opts = {
@@ -29,6 +40,27 @@ require('lazy').setup({
       open_mapping = [[<c-\>]],
     },
   },
+  -- {
+  --   "zbirenbaum/copilot.lua",
+  --   cmd = "Copilot",
+  --   event = "InsertEnter",
+  --   opts = {
+  --     panel = { enabled = false },
+  --     suggestion = { enabled = false },
+  --     filetypes = {
+  --       gitcommit = false,
+  --       gitrebase = false,
+  --     },
+  --     copilot_node_command = 'node',
+  --     server_opts_overrides = {},
+  --   }
+  -- },
+  -- {
+  --   "zbirenbaum/copilot-cmp",
+  --   config = function()
+  --     require("copilot_cmp").setup()
+  --   end
+  -- },
   {
     "jackMort/ChatGPT.nvim",
     event = "VeryLazy",
@@ -136,6 +168,9 @@ require('lazy').setup({
     'lukas-reineke/indent-blankline.nvim',
     main = 'ibl',
     opts = {},
+    config = function()
+      require "ibl".setup()
+    end
   },
   {
     'numToStr/Comment.nvim',
