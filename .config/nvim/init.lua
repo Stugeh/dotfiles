@@ -11,8 +11,8 @@ require('lazy').setup({
   require 'lsp.lspconfig',
   require 'lsp.treesitter',
 
-  require 'plugs.lazygit',
   require 'plugs.toggleterm',
+  require 'plugs.lazygit',
   require 'plugs.cmp',
   require 'plugs.gitsigns',
   require 'plugs.lualine',
@@ -24,6 +24,7 @@ require('lazy').setup({
   require 'plugs.nvim_tree',
   require 'plugs.leap',
   require 'plugs.autopairs',
+  require 'plugs.noice',
 
   require 'theme',
 
