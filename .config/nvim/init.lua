@@ -28,10 +28,6 @@ require('lazy').setup({
   require 'theme',
 
   {
-    'altermo/ultimate-autopair.nvim',
-    event = { 'InsertEnter', 'CmdlineEnter' },
-  },
-  {
     'David-Kunz/gen.nvim',
     config = function()
       require('gen').model = 'codellama'
