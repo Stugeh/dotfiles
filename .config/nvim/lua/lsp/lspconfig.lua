@@ -53,6 +53,7 @@ return {
                 return c.id == client.id
               end,
             }
+            vim.diagnostic.enable(bufnr)
           end,
         })
       end,

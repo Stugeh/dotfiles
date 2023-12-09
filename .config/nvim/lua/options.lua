@@ -21,8 +21,8 @@ vim.g.loaded_netrwPlugin = 1
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.opt.termguicolors = true
-vim.g.linewrap = false
 
+vim.o.wrap = false
 vim.o.hlsearch = true
 vim.wo.number = true
 vim.o.mouse = 'a'
