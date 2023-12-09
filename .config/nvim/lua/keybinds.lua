@@ -28,6 +28,15 @@ vim.keymap.set('n', '<leader>\\4', '<cmd>4ToggleTerm<cr>')
 vim.keymap.set('n', '<leader>\\5', '<cmd>5ToggleTerm<cr>')
 vim.keymap.set('n', '<leader>\\6', '<cmd>6ToggleTerm<cr>')
 
+local Terminal = require('toggleterm.terminal').Terminal
+local ranger   = Terminal:new({ cmd = "ranger ~", hidden = true, direction = 'float' })
+
+function Ranger_toggle()
+  ranger:toggle()
+end
+
+vim.api.nvim_set_keymap("n", "<leader>\\r", "<cmd>lua Ranger_toggle()<CR>", { noremap = true, silent = true })
+
 -- gen nvim
 vim.keymap.set('v', '<C-;>', ':Gen<CR>')
 vim.keymap.set('n', '<C-;>', ':Gen<CR>')
