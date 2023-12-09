@@ -1,8 +1,3 @@
-ErrorIcon = '✘'
-WarningIcon = '▲'
-HintIcon = ''
-InfoIcon = ''
-
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
@@ -37,22 +32,26 @@ vim.o.timeoutlen = 300
 vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
 vim.o.scrolloff = 20
+ErrorIcon = '✘'
+WarningIcon = '▲'
+HintIcon = ''
+InfoIcon = ''
+
 vim.diagnostic.config {
+  severity_sort = true,
   virtual_text = {
     format = function(diagnostic)
-      if diagnostic.severity == vim.diagnostic.severity.E then
-        return string.format('%s %s', ErrorIcon, diagnostic.message)
+      if diagnostic.severity == vim.diagnostic.severity.N then
+        return string.format('%s %s', HintIcon, diagnostic.message)
+      end
+      if diagnostic.severity == vim.diagnostic.severity.I then
+        return string.format('%s %s', InfoIcon, diagnostic.message)
       end
       if diagnostic.severity == vim.diagnostic.severity.W then
         return string.format('%s %s', WarningIcon, diagnostic.message)
       end
-
-      if diagnostic.severity == vim.diagnostic.severity.I then
-        return string.format('%s %s', InfoIcon, diagnostic.message)
-      end
-
-      if diagnostic.severity == vim.diagnostic.severity.N then
-        return string.format('%s %s', HintIcon, diagnostic.message)
+      if diagnostic.severity == vim.diagnostic.severity.E then
+        return string.format('%s %s', ErrorIcon, diagnostic.message)
       end
     end,
   },
@@ -66,6 +65,7 @@ vim.diagnostic.config {
     },
   },
 }
+
 local sign = function(opts)
   vim.fn.sign_define(opts.name, {
     texthl = opts.name,
@@ -73,6 +73,11 @@ local sign = function(opts)
     numhl = '',
   })
 end
+
+sign { name = 'DiagnosticSignInfo', text = InfoIcon }
+sign { name = 'DiagnosticSignHint', text = HintIcon }
+sign { name = 'DiagnosticSignWarn', text = WarningIcon }
+sign { name = 'DiagnosticSignError', text = ErrorIcon }
 
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -82,25 +87,3 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
-
-local function diagnostics_indicator(_, _, diagnostics, _)
-  local result = {}
-  local symbols = {
-    error = '',
-    warning = '',
-    info = '',
-  }
-
-  for name, count in pairs(diagnostics) do
-    if symbols[name] and count > 0 then
-      table.insert(result, symbols[name] .. ' ' .. count)
-    end
-  end
-  result = table.concat(result, ' ')
-  return #result > 0 and result or ''
-end
-
-sign { name = 'DiagnosticSignError', text = ErrorIcon }
-sign { name = 'DiagnosticSignWarn', text = WarningIcon }
-sign { name = 'DiagnosticSignHint', text = HintIcon }
-sign { name = 'DiagnosticSignInfo', text = InfoIcon }
