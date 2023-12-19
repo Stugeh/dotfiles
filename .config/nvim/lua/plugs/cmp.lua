@@ -1,3 +1,17 @@
+--
+-- namespace File.Namespace.Content
+-- {
+--     [ContentType(GUID = "",
+--         DisplayName = "Content page",
+--         GroupName = Constants.GroupNames.Default,
+--         Order = 0)]
+--     public class ContentPage : BasePageData
+--     {
+--         [CultureSpecific]
+--         [Display(GroupName = SystemTabNames.Content, Order = 0)]
+--         public virtual string Property { get; set; }
+--     }
+-- }
 return {
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",

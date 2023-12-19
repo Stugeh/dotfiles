@@ -7,9 +7,10 @@ require('lazy').setup({
   'nvim-tree/nvim-web-devicons',
   'tpope/vim-surround',
 
-  require 'lsp.mason',
-  require 'lsp.lspconfig',
+  require 'lsp.lsp',
   require 'lsp.treesitter',
+  require 'lsp.conform',
+  require 'lsp.nvim-lint',
 
   require 'plugs.toggleterm',
   require 'plugs.lazygit',

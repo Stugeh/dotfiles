@@ -1,5 +1,11 @@
 return {
   'williamboman/mason-lspconfig.nvim',
+  dependencies = {
+    'neovim/nvim-lspconfig',
+    'williamboman/mason.nvim',
+    { "antosha417/nvim-lsp-file-operations", config = true },
+    'folke/neodev.nvim',
+  },
   config = function()
     local on_attach = function(_, bufnr)
       local nmap = function(keys, func, desc)
@@ -31,7 +37,6 @@ return {
 
     local servers = {
       gopls = {},
-      -- eslint = {},
       rust_analyzer = { check = { command = "clippy" } },
       volar = { filetypes = { 'vue' } },
       tsserver = { filetypes = { 'tsx', 'ts', 'vue', 'typescript' } },
@@ -55,9 +60,10 @@ return {
       ensure_installed = servers,
     }
 
+    local lspconfig = require 'lspconfig'
     mason_lspconfig.setup_handlers {
       function(server_name)
-        require('lspconfig')[server_name].setup {
+        lspconfig[server_name].setup {
           capabilities = capabilities,
           on_attach = on_attach,
           settings = servers[server_name],
@@ -66,7 +72,7 @@ return {
       end,
     }
 
-    require('lspconfig').eslint.setup({
+    lspconfig.eslint.setup({
       --- ...
       on_attach = function(_, bufnr)
         vim.api.nvim_create_autocmd("BufWritePre", {
