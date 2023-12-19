@@ -19,10 +19,15 @@ return {
         tailwind = { "rustywind" },
         go = { "goimports", "gofmt" }
       },
-      format_on_save = {
-        lsp_fallback = true,
-        async = false,
-      },
+      format_on_save = function(bufnr)
+        if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+          return
+        end
+        return {
+          lsp_fallback = true,
+          async = false,
+        }
+      end,
     })
   end
 }

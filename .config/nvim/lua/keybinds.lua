@@ -65,3 +65,27 @@ require('which-key').register {
   ['<leader>s'] = { name = 'Search', _ = 'which_key_ignore' },
   ['<leader>w'] = { name = 'Workspace', _ = 'which_key_ignore' },
 }
+
+-- Toggle for formatting on save
+vim.api.nvim_create_user_command("ToggleFormatting", function(args)
+  if args.bang then
+    vim.b.disable_autoformat = not vim.b.disable_autoformat
+    if vim.b.disable_autoformat == true then
+      vim.notify("Disabled Formatting for buffer.")
+    else
+      vim.notify("Enabled Formatting for buffer.")
+    end
+  else
+    vim.g.disable_autoformat = not vim.g.disable_autoformat
+    if vim.g.disable_autoformat == true then
+      vim.notify("Disabled Formatting.")
+    else
+      vim.notify("Enabled Formatting.")
+    end
+  end
+end, {
+  desc = "Disable autoformat-on-save",
+  bang = true,
+})
+
+vim.keymap.set('n', '<leader>tf', '<cmd>ToggleFormatting<cr>')
