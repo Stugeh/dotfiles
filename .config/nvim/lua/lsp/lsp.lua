@@ -3,7 +3,7 @@ return {
   dependencies = {
     'neovim/nvim-lspconfig',
     'williamboman/mason.nvim',
-    { "antosha417/nvim-lsp-file-operations", config = true },
+    { 'antosha417/nvim-lsp-file-operations', config = true },
     'folke/neodev.nvim',
   },
   config = function()
@@ -32,15 +32,14 @@ return {
     end
 
     require('mason').setup {
-      ui = { border = "rounded" }
+      ui = { border = 'rounded' },
     }
 
     local servers = {
       gopls = {},
-      rust_analyzer = { check = { command = "clippy" } },
+      rust_analyzer = { check = { command = 'clippy' } },
       volar = { filetypes = { 'vue' } },
       tsserver = { filetypes = { 'tsx', 'ts', 'vue', 'typescript' } },
-      omnisharp = { filetypes = { 'cs', 'csharp', 'c#' } },
       html = { filetypes = { 'html', 'twig', 'hbs' } },
 
       lua_ls = {
@@ -72,16 +71,16 @@ return {
       end,
     }
 
-    lspconfig.eslint.setup({
+    lspconfig.eslint.setup {
       --- ...
       on_attach = function(_, bufnr)
-        vim.api.nvim_create_autocmd("BufWritePre", {
+        vim.api.nvim_create_autocmd('BufWritePre', {
           buffer = bufnr,
-          command = "EslintFixAll",
+          command = 'EslintFixAll',
         })
       end,
-    })
+    }
 
     require('mason-lspconfig').setup()
-  end
+  end,
 }
