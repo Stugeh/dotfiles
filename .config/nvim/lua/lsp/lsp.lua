@@ -25,7 +25,7 @@ return {
       nmap('<leader>ss', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Search symbols')
       nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
       nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
-      -- Create a command `:Format` local to the LSP buffer
+
       vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
         vim.lsp.buf.format()
       end, { desc = 'Format current buffer with LSP' })
@@ -40,7 +40,8 @@ return {
       rust_analyzer = { check = { command = 'clippy' } },
       volar = { filetypes = { 'vue' } },
       tsserver = { filetypes = { 'tsx', 'ts', 'vue', 'typescript' } },
-      html = { filetypes = { 'html', 'twig', 'hbs' } },
+      html = { filetypes = { 'html' } },
+      clangd = { filetypes = { 'c++', 'cpp', 'hpp' } },
 
       lua_ls = {
         Lua = {
@@ -60,6 +61,7 @@ return {
     }
 
     local lspconfig = require 'lspconfig'
+
     mason_lspconfig.setup_handlers {
       function(server_name)
         lspconfig[server_name].setup {
@@ -72,7 +74,6 @@ return {
     }
 
     lspconfig.eslint.setup {
-      --- ...
       on_attach = function(_, bufnr)
         vim.api.nvim_create_autocmd('BufWritePre', {
           buffer = bufnr,
