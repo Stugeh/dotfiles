@@ -1,0 +1,15 @@
+[Default Applications]
+text/plain=kitty.desktop
+application/zip=userapp-unzip-39UF71.desktop
+application/x-sharedlib=cmake-gui.desktop
+font/ttf=gimp.desktop
+x-scheme-handler/discord-409416265891971072=discord-409416265891971072.desktop
+x-scheme-handler/discord-589393213723246592=discord-589393213723246592.desktop
+application/x-directory=ranger.desktop
+
+[Added Associations]
+text/plain=thunar.desktop;neovide.desktop;kitty.desktop;
+application/zip=userapp-lvim-HOPW71.desktop;
+application/x-sharedlib=cmake-gui.desktop;
+font/ttf=org.fontforge.FontForge.desktop;gimp.desktop;
+application/vnd.efi.iso=thunar-volman-settings.desktop;
