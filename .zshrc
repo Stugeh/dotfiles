@@ -7,10 +7,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:~/.local/bin:~/local/bin:$PATH
-
-
+set -o vi
 alias thn="thunar . & disown"
 alias rn="ranger ."
 alias pics="ranger ~/Pictures"
@@ -23,16 +21,19 @@ alias ping="ping -c 5"
 alias HEAD="curl -I"
 alias sus="systemctl suspend"
 alias c="clear"
+alias bton="systemctl start bluetooth.service"
+alias btoff="systemctl stop bluetooth.service"
+
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 # source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /home/tuukka/Repos/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 source ~/.config/lf/lfcd.sh
 
-export EDITOR=lvim
+export EDITOR=nvim
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
