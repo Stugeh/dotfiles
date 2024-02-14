@@ -12,6 +12,8 @@ require('lazy').setup({
   'RRethy/vim-illuminate',
   -- Surround selection with symbol
   'tpope/vim-surround',
+  -- Icons for page tree
+  'nvim-tree/nvim-web-devicons',
 
   -- Language server configs
   require 'lsp.lsp',
@@ -40,8 +42,6 @@ require('lazy').setup({
   -- Tab bar
   -- require 'plugs.bufferline',
   -- require 'plugs.ChatGPT',
-  -- Icons for page tree
-  'nvim-tree/nvim-web-devicons',
   -- Page tree
   require 'plugs.nvim_tree',
   -- Quick code navigation
@@ -50,6 +50,8 @@ require('lazy').setup({
   require 'plugs.autopairs',
   -- A Nicer looking command prompt
   require 'plugs.noice',
+
+  require 'plugs.debug',
 
   require 'theme',
 
