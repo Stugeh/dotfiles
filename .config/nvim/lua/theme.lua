@@ -10,5 +10,6 @@ return {
     vim.g.gruvbox_material_current_word = 'bold'
     vim.g.gruvbox_material_invert_selection = true
     vim.cmd.colorscheme 'gruvbox-material'
+    vim.api.nvim_set_hl(0, 'StatusLine', { bg = 'black', fg = 'white' })
   end,
 }

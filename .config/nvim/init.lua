@@ -48,8 +48,7 @@ require('lazy').setup({
   require 'plugs.leap',
   -- Close brackets, braces etc.
   require 'plugs.autopairs',
-  -- A Nicer looking command prompt
-  require 'plugs.noice',
+  require 'plugs.eye_candy',
 
   require 'plugs.debug',
 
