@@ -12,11 +12,30 @@ return {
     local dap = require 'dap'
     local dapui = require 'dapui'
 
+    dap.adapters.gdb = {
+      type = 'executable',
+      command = 'gdb',
+      args = { '-i', 'dap' },
+    }
     require('mason-nvim-dap').setup {
       automatic_setup = true,
       handlers = {},
       ensure_installed = {
         'delve',
+        'gdb',
+      },
+    }
+
+    dap.configurations.c = {
+      {
+        name = 'Launch',
+        type = 'gdb',
+        request = 'launch',
+        program = function()
+          return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/build/Hyprland')
+        end,
+        cwd = '${workspaceFolder}',
+        stopAtBeginningOfMainSubprogram = false,
       },
     }
 
@@ -30,17 +49,17 @@ return {
     end, { desc = 'Debug: Set Breakpoint' })
 
     dapui.setup {
-      icons = { expanded = '▾', collapsed = '▸', current_frame = '*' },
+      icons = { expanded = '', collapsed = '', current_frame = '*' },
       controls = {
         icons = {
-          pause = '⏸',
+          pause = '',
           play = '▶',
-          step_into = '⏎',
-          step_over = '⏭',
-          step_out = '⏮',
-          step_back = 'b',
+          step_over = '',
+          step_into = '',
+          step_out = '',
+          step_back = '',
           run_last = '▶▶',
-          terminate = '⏹',
+          terminate = '',
           disconnect = '⏏',
         },
       },
