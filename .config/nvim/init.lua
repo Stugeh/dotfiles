@@ -63,7 +63,7 @@ require('lazy').setup({
   --     require('gen').model = 'codellama'
   --   end,
   -- },
-  require 'plugs.noice',
+  require 'plugs.eye_candy',
   require 'plugs.neorg',
 
   require 'theme',

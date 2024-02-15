@@ -40,9 +40,8 @@ map('n', '<C-l>', ':wincmd l<CR>')
 map('n', '<C-h>', ':wincmd h<CR>')
 
 map('n', '<leader>ws', ':vsplit<CR>')
--- telescope
 
-=======
+-- telescope
 map('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = 'Find recently opened files' })
 map('n', '<leader><space>', require('telescope.builtin').buffers, { desc = 'Find existing buffers' })
 map('n', '<leader>f', require('telescope.builtin').find_files, { desc = 'Search files' })
@@ -52,60 +51,27 @@ map('n', '<leader>sT', ':LiveGrepGitRoot<cr>', { desc = 'Search by text from git
 map('n', '<leader>sc', ':SearchConfigFiles<cr>', { desc = 'Search config files' })
 map('n', '<leader>sx', ':SearchDocs<cr>', { desc = 'Search documentation files' })
 
-map('n', '<leader>ns', ':SearchNotes<cr>', { desc = 'Search neorg notes' })
-map('n', '<leader>ng', ':GrepNotes<cr>', { desc = 'Grep neorg notes' })
-
-map('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = 'Search diagnostics' })
-map('n', '<leader>sr', require('telescope.builtin').resume, { desc = 'Search resume' })
-map('n', '<leader>/', function()
-  require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-    winblend = 10,
-    previewer = false,
-  })
-end, { desc = 'Fuzzy search in buf' })
-
-vim.keymap.set('n', '<leader>tf', '<cmd>ToggleFormatting<cr>')
-vim.keymap.set('n', '<leader>ng', '<cmd>Neorg workspace games<cr>')
-
-require('which-key').register {
-  ['<leader>l'] = { name = 'Lsp', _ = 'which_key_ignore' },
-  ['<leader>g'] = { name = 'Git', _ = 'which_key_ignore' },
-  ['<leader>r'] = { name = 'Rename', _ = 'which_key_ignore' },
-  ['<leader>s'] = { name = 'Search', _ = 'which_key_ignore' },
-  ['<leader>w'] = { name = 'Workspace', _ = 'which_key_ignore' },
-}
-
--- Toggle for formatting on save
-vim.api.nvim_create_user_command("ToggleFormatting", function(args)
-  if args.bang then
-    vim.b.disable_autoformat = not vim.b.disable_autoformat
-    if vim.b.disable_autoformat == true then
-      vim.notify("Disabled Formatting for buffer.")
-    else
-      vim.notify("Enabled Formatting for buffer.")
-    end
-  else
-    vim.g.disable_autoformat = not vim.g.disable_autoformat
-    if vim.g.disable_autoformat == true then
-      vim.notify("Disabled Formatting.")
-    else
-      vim.notify("Enabled Formatting.")
-    end
-  end
-end, {
-  desc = "Disable autoformat-on-save",
-  bang = true,
-})
-
-vim.cmd [[
-  command! -nargs=1 EditWiki edit ~/Atria2023.wiki/<args>.md
-]]
-
-map('n', '<leader>tf', '<cmd>ToggleFormatting<cr>')
-
 -- neorg
 map('n', '<leader>nh', '<cmd>Neorg workspace hours<cr>')
 map('n', '<leader>nr', '<cmd>Neorg workspace notes<cr>')
 map('n', '<leader>nm', '<cmd>Neorg workspace misc<cr>')
 map('n', '<leader>nt', '<cmd>edit ~/notes/work/todos.norg<cr>')
 map('n', '<leader>nd', '<cmd>edit ~/Atria2023.wiki')
+
+map('n', '<leader>ns', ':SearchNotes<cr>', { desc = 'Search neorg notes' })
+map('n', '<leader>ng', ':GrepNotes<cr>', { desc = 'Grep neorg notes' })
+
+map('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = 'Search diagnostics' })
+map('n', '<leader>sr', require('telescope.builtin').resume, { desc = 'Search resume' })
+map('n', '<leader>tf', '<cmd>ToggleFormatting<cr>')
+
+vim.cmd [[
+  command! -nargs=1 EditWiki edit ~/Atria2023.wiki/<args>.md
+]]
+
+map('n', '<leader>/', function()
+  require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+    winblend = 10,
+    previewer = false,
+  })
+end, { desc = 'Fuzzy search in buf' })
