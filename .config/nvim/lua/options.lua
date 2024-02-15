@@ -17,6 +17,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.opt.termguicolors = true
 
+vim.opt.showtabline = 1
 vim.o.wrap = false
 vim.o.hlsearch = true
 vim.wo.number = true
@@ -36,6 +37,8 @@ ErrorIcon = '✘'
 WarningIcon = '▲'
 HintIcon = ''
 InfoIcon = ''
+
+vim.cmd([[hi StatusLine guibg=NONE]])
 
 vim.diagnostic.config {
   severity_sort = true,

@@ -58,7 +58,30 @@ return {
       }
     end
 
+    local function search_documentation_files()
+      require('telescope.builtin').find_files {
+        search_dirs = { "~/Atria2023.wiki" }
+      }
+    end
+
+    local function search_notes()
+      require('telescope.builtin').find_files {
+        search_dirs = { "~/notes" }
+      }
+    end
+
+    local function grep_notes()
+      require('telescope.builtin').live_grep {
+        search_dirs = { "~/notes" }
+      }
+    end
+
     vim.api.nvim_create_user_command('LiveGrepGitRoot', live_grep_git_root, {})
     vim.api.nvim_create_user_command('SearchConfigFiles', search_config_files, {})
+
+    vim.api.nvim_create_user_command('SearchNotes', search_notes, {})
+    vim.api.nvim_create_user_command('GrepNotes', grep_notes, {})
+
+    vim.api.nvim_create_user_command('SearchDocs', search_documentation_files, {})
   end
 }
