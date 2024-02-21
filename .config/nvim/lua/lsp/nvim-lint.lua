@@ -10,7 +10,6 @@ return {
       javascriptreact = { 'eslint_d' },
       typescriptreact = { 'eslint_d' },
       vue = { 'volar', 'eslint_d' },
-      python = { 'pylint' },
       cpp = { 'cpplint' },
     }
   end,

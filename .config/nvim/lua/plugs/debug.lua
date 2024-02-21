@@ -28,7 +28,7 @@ return {
 
     dap.configurations.c = {
       {
-        name = 'Launch',
+        name = 'Debug Hyprland',
         type = 'gdb',
         request = 'launch',
         program = function()

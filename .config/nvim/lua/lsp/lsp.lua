@@ -1,20 +1,20 @@
 return {
-  'williamboman/mason-lspconfig.nvim',
+  'williamboman/mason.nvim',
   dependencies = {
+    'williamboman/mason-lspconfig.nvim',
     'neovim/nvim-lspconfig',
-    'williamboman/mason.nvim',
-    { "antosha417/nvim-lsp-file-operations", config = true },
+
+    { 'antosha417/nvim-lsp-file-operations', config = true, opts = { lsp = { auto_attach = true } } },
     {
-      "SmiteshP/nvim-navbuddy",
-      dependencies = {
-        "SmiteshP/nvim-navic",
-        "MunifTanjim/nui.nvim"
-      },
-      opts = { lsp = { auto_attach = true } }
-    }, 'folke/neodev.nvim',
+      'SmiteshP/nvim-navbuddy',
+      dependencies = { 'SmiteshP/nvim-navic', 'MunifTanjim/nui.nvim', 'numToStr/Comment.nvim', 'nvim-telescope/telescope.nvim' },
+      opts = { lsp = { auto_attach = true }, window = { border = 'none' } },
+    },
+    'folke/neodev.nvim',
   },
+
   config = function()
-    local on_attach = function(_, bufnr)
+    local on_attach = function(client, bufnr)
       local nmap = function(keys, func, desc)
         if desc then
           desc = '' .. desc
@@ -33,22 +33,22 @@ return {
       nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
       nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
-      vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-        vim.lsp.buf.format()
-      end, { desc = 'Format current buffer with LSP' })
+      if client.server_capabilities.documentSymbolProvider then
+        require('nvim-navbuddy').attach(client, bufnr)
+      end
     end
 
     require('mason').setup {
-      ui = { border = "rounded" }
+      ui = { border = 'rounded' },
     }
 
     local servers = {
-      gopls = {},
-      rust_analyzer = { check = { command = "clippy" } },
+      gopls = { filetypes = { 'go', 'templ' } },
+      templ = { filetypes = { 'templ' } },
+      rust_analyzer = { check = { command = 'clippy' } },
       volar = { filetypes = { 'vue' } },
-      html = { filetypes = { 'html' } },
+      html = { filetypes = { 'html', 'templ' } },
       clangd = { filetypes = { 'c++', 'cpp', 'hpp' } },
-      -- tsserver = { filetypes = { 'tsx', 'ts', 'vue', 'typescript' } },
       omnisharp = { filetypes = { 'cs', 'csharp', 'c#' } },
 
       lua_ls = {
@@ -81,16 +81,15 @@ return {
       end,
     }
 
-    lspconfig.eslint.setup({
-      --- ...
-      on_attach = function(_, bufnr)
-        vim.api.nvim_create_autocmd("BufWritePre", {
-          buffer = bufnr,
-          command = "EslintFixAll",
-        })
-      end,
-    })
+    -- lspconfig.eslint.setup {
+    --   on_attach = function(_, bufnr)
+    --     vim.api.nvim_create_autocmd('BufWritePre', {
+    --       buffer = bufnr,
+    --       command = 'EslintFixAll',
+    --     })
+    --   end,
+    -- }
 
     require('mason-lspconfig').setup()
-  end
+  end,
 }
