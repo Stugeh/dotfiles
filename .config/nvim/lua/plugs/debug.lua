@@ -12,18 +12,11 @@ return {
     local dap = require 'dap'
     local dapui = require 'dapui'
 
+    -- C / CPP
     dap.adapters.gdb = {
       type = 'executable',
       command = 'gdb',
       args = { '-i', 'dap' },
-    }
-    require('mason-nvim-dap').setup {
-      automatic_setup = true,
-      handlers = {},
-      ensure_installed = {
-        'delve',
-        'gdb',
-      },
     }
 
     dap.configurations.c = {
@@ -38,6 +31,34 @@ return {
         stopAtBeginningOfMainSubprogram = false,
       },
     }
+
+    -- C#
+    dap.adapters.coreclr = {
+      type = 'executable',
+      command = '/usr/local/bin/netcoredbg/netcoredbg',
+      args = { '--interpreter=vscode' }
+    }
+
+    dap.configurations.cs = {
+      {
+        type = "coreclr",
+        name = "Debug atria",
+        request = "launch",
+        program = function()
+          return "~/Atria2023/Atria.Web/bin/host/Debug/net6.0/Atria.Web.dll"
+        end,
+      },
+    }
+
+    require('mason-nvim-dap').setup {
+      automatic_setup = true,
+      handlers = {},
+      ensure_installed = {
+        'delve',
+        'gdb',
+      },
+    }
+
 
     vim.keymap.set('n', '<F5>', dap.continue, { desc = 'Debug: Start/Continue' })
     vim.keymap.set('n', '<F1>', dap.step_into, { desc = 'Debug: Step Into' })
@@ -66,6 +87,7 @@ return {
     }
 
     vim.keymap.set('n', '<F7>', dapui.toggle, { desc = 'Debug: See last session result.' })
+    vim.keymap.set('n', 'dbc', dapui.toggle, { desc = 'Debug: See last session result.' })
 
     dap.listeners.after.event_initialized['dapui_config'] = dapui.open
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
