@@ -18,7 +18,7 @@ vim.o.updatetime = 250
 vim.o.timeoutlen = 300
 vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
-vim.o.scrolloff = 20
+vim.o.scrolloff = 40
 
 -- Briefly highlight selection when yanking
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
