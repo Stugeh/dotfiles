@@ -7,6 +7,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 
+export DOTNET_ROOT="$HOMEBREW_PREFIX/opt/dotnet@6/libexec"
 export PATH=$HOME/bin:/usr/local/bin:~/.local/bin:~/local/bin:$PATH:/opt/homebrew/bin:$PATH
 
 set -o vi
@@ -46,9 +47,10 @@ source ~/Repos/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/Repos/powerlevel10k/powerlevel10k.zsh-theme
 # source ~/Repos/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export PATH=/home/tuukka/.nvm/versions/node/v18.18.0/bin:/home/tuukka/bin:/usr/local/bin:/home/tuukka/.local/bin:/home/tuukka/local/bin:/home/tuukka/.nvm/versions/node/v18.18.0/bin:/home/tuukka/bin:/usr/local/bin:/home/tuukka/.local/bin:/home/tuukka/local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:$HOME/go/bin
+
+export PATH="/opt/homebrew/opt/dotnet@6/bin:$PATH"
