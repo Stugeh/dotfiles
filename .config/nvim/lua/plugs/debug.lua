@@ -48,20 +48,11 @@ return {
       dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
     end, { desc = 'Debug: Set Breakpoint' })
 
+    local icons = require 'icons'
     dapui.setup {
-      icons = { expanded = '', collapsed = '', current_frame = '*' },
+      icons = icons.ui.debugger.other_icons,
       controls = {
-        icons = {
-          pause = '',
-          play = '▶',
-          step_over = '',
-          step_into = '',
-          step_out = '',
-          step_back = '',
-          run_last = '▶▶',
-          terminate = '',
-          disconnect = '⏏',
-        },
+        icons = icons.ui.debugger.controls,
       },
     }
 
