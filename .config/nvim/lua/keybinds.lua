@@ -1,6 +1,26 @@
 local map = vim.keymap.set
+local opts = { noremap = true, silent = true }
 
 map({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+
+-- Stay in visual selection after indent
+
+map('v', '<', '<gv', { noremap = true, silent = true })
+map('v', '>', '>gv', { noremap = true, silent = true })
+
+-- Mouse context menus
+vim.cmd [[:amenu 10.100 mousemenu.Goto\ Definition <cmd>lua vim.lsp.buf.definition()<CR>]]
+vim.cmd [[:amenu 10.110 mousemenu.References <cmd>lua vim.lsp.buf.references()<CR>]]
+vim.keymap.set('n', '<RightMouse>', '<cmd>:popup mousemenu<CR>')
+vim.keymap.set('n', '<Tab>', '<cmd>:popup mousemenu<CR>')
+
+-- Center cursor
+map('n', 'n', 'nzz', opts)
+map('n', 'N', 'Nzz', opts)
+map('n', '*', '*zz', opts)
+map('n', '#', '#zz', opts)
+map('n', 'g*', 'g*zz', opts)
+map('n', 'g#', 'g#zz', opts)
 
 -- Remap for dealing with word wrap
 map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -10,7 +30,7 @@ map('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 map('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
 map('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 map('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
-map('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+map('n', '<leader>lq', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 map('n', '<leader>e', '<cmd>NvimTreeToggle<CR>')
 map('n', '<leader>w', '<cmd>w<CR>')
