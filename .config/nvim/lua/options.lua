@@ -19,6 +19,17 @@ vim.o.timeoutlen = 300
 vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
 vim.o.scrolloff = 40
+vim.opt.relativenumber = true
+vim.opt.guifont = 'monospace:h17' -- the font used in graphical neovim applications
+
+vim.opt.fillchars = vim.opt.fillchars + 'eob: '
+vim.opt.fillchars:append {
+  stl = ' ',
+}
+vim.opt.shortmess:append 'c'
+
+vim.cmd 'set whichwrap+=<,>,[,],h,l'
+vim.cmd [[set iskeyword+=-]]
 
 -- Briefly highlight selection when yanking
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })

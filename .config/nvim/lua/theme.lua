@@ -11,5 +11,9 @@ return {
     vim.g.gruvbox_material_invert_selection = true
     vim.cmd.colorscheme 'gruvbox-material'
     vim.api.nvim_set_hl(0, 'StatusLine', { bg = 'black', fg = 'white' })
+    vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'black', fg = 'white' })
+    vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'black', fg = 'gray' })
+    vim.api.nvim_set_hl(0, 'MasonHeader', { bg = 'black', fg = 'white' })
+    vim.api.nvim_set_hl(0, 'MasonMutedBlock', { bg = 'black', fg = 'white' })
   end,
 }

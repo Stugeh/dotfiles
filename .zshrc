@@ -16,10 +16,10 @@ alias rn="ranger ."
 alias pics="ranger ~/Pictures"
 alias downs="ranger ~/Downloads"
 alias confs="ranger ~/.config"
-alias ls="ls --color -l -h" 
-alias grep="grep -n --color" 
-alias mkdir="mkdir -pv" 
-alias ping="ping -c 5" 
+alias ls="ls --color -l -h"
+alias grep="grep -n --color"
+alias mkdir="mkdir -pv"
+alias ping="ping -c 5"
 alias HEAD="curl -I"
 alias sus="systemctl suspend"
 alias c="clear"
@@ -28,6 +28,7 @@ alias btoff="systemctl stop bluetooth.service"
 alias dnr="dotnet run"
 alias nrd="npm run dev"
 alias glm="git log --author=tuukka"
+alias gnr="templ generate && go run main.go"
 
 
 export EDITOR=nvim
@@ -40,12 +41,12 @@ source ~/.config/lf/lfcd.sh
 source ~/Repos/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Linux
-# source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-# source ~/Repos/powerlevel10k/powerlevel10k.zsh-theme
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # Mac
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/Repos/powerlevel10k/powerlevel10k.zsh-theme
+# source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source ~/Repos/powerlevel10k/powerlevel10k.zsh-theme
 # source ~/Repos/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
