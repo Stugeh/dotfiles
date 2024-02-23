@@ -17,12 +17,26 @@ require('lazy').setup({
   'nvim-tree/nvim-web-devicons',
 
   -- Language server configs
-  require 'lsp.lsp',
+  require 'lsp.mason',
+  require 'lsp.lspconfig',
   require 'lsp.treesitter',
   -- Formatters
   require 'lsp.conform',
   -- Linters
   require 'lsp.nvim-lint',
+
+  {
+    'LunarVim/breadcrumbs.nvim',
+    config = function()
+      require('breadcrumbs').setup()
+    end,
+  },
+
+  {
+    'dzfrias/arena.nvim',
+    event = 'BufWinEnter',
+    config = true,
+  },
 
   -- Tooltips for remembering keybinds
   -- require 'plugs.whichkey',
@@ -56,13 +70,6 @@ require('lazy').setup({
 
   require 'theme',
 
-  -- Local llm assistant
-  -- {
-  --   'David-Kunz/gen.nvim',
-  --   config = function()
-  --     require('gen').model = 'codellama'
-  --   end,
-  -- },
   require 'plugs.eye_candy',
   require 'plugs.neorg',
 
