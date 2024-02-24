@@ -21,6 +21,12 @@ return {
           },
         },
       },
+      pickers = {
+        buffers = {
+          ignore_current_buffer = true,
+          sort_lastused = true,
+        },
+      },
     }
 
     pcall(require('telescope').load_extension, 'fzf')
@@ -34,8 +40,7 @@ return {
       else
         current_dir = vim.fn.fnamemodify(current_file, ':h')
       end
-      local git_root = vim.fn.systemlist('git -C ' .. vim.fn.escape(current_dir, ' ') .. ' rev-parse --show-toplevel')
-          [1]
+      local git_root = vim.fn.systemlist('git -C ' .. vim.fn.escape(current_dir, ' ') .. ' rev-parse --show-toplevel')[1]
       if vim.v.shell_error ~= 0 then
         print 'Not a git repository. Searching on current working directory'
         return cwd
@@ -54,25 +59,25 @@ return {
 
     local function search_config_files()
       require('telescope.builtin').find_files {
-        search_dirs = { "~/.config/nvim" }
+        search_dirs = { '~/.config/nvim' },
       }
     end
 
     local function search_documentation_files()
       require('telescope.builtin').find_files {
-        search_dirs = { "~/Atria2023.wiki" }
+        search_dirs = { '~/Atria2023.wiki' },
       }
     end
 
     local function search_notes()
       require('telescope.builtin').find_files {
-        search_dirs = { "~/notes" }
+        search_dirs = { '~/notes' },
       }
     end
 
     local function grep_notes()
       require('telescope.builtin').live_grep {
-        search_dirs = { "~/notes" }
+        search_dirs = { '~/notes' },
       }
     end
 
@@ -83,5 +88,5 @@ return {
     vim.api.nvim_create_user_command('GrepNotes', grep_notes, {})
 
     vim.api.nvim_create_user_command('SearchDocs', search_documentation_files, {})
-  end
+  end,
 }
