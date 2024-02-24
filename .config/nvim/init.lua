@@ -6,6 +6,7 @@ require 'options'
 require 'diagnostics'
 
 require('lazy').setup({
+  ui = { border = 'rounded' },
   -- Set indent style based on current file
   'tpope/vim-sleuth',
 
@@ -84,9 +85,11 @@ require('lazy').setup({
 
   require 'plugs.eye_candy',
   require 'plugs.neorg',
+  require 'plugs.colorizer',
 
   require 'theme',
 
+  require 'plugs.dressing',
   {
     'David-Kunz/gen.nvim',
     config = function()
