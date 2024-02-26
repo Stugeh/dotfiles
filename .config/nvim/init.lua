@@ -39,6 +39,8 @@ require('lazy').setup({
     end,
   },
 
+  require 'plugs.eyeliner',
+  require 'plugs.ufo',
   -- Tooltips for remembering keybinds
   -- require 'plugs.whichkey',
   --
