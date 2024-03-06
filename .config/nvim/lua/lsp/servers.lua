@@ -9,6 +9,7 @@ return {
     'lua_ls',
     'html',
     'cssls',
+    'tailwindcss',
   },
   server_configs = {
     gopls = { filetypes = { 'go', 'templ' } },
@@ -16,6 +17,7 @@ return {
     rust_analyzer = { check = { command = 'clippy' } },
     volar = { filetypes = { 'vue' } },
     html = { filetypes = { 'html', 'templ' } },
+    tailwindcss = { filetypes = { 'html', 'vue' } },
     clangd = { filetypes = { 'c++', 'cpp', 'hpp' } },
     omnisharp = { filetypes = { 'cs', 'csharp', 'c#' } },
 
