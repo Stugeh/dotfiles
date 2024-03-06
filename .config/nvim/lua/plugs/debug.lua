@@ -19,36 +19,42 @@ return {
       args = { '-i', 'dap' },
     }
 
-    dap.configurations.c = {
+    dap.configurations.cpp = {
       {
         name = 'Debug Hyprland',
         type = 'gdb',
         request = 'launch',
-        program = function()
-          return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/build/Hyprland')
-        end,
+        program = '~/Hyprland/build/Hyprland',
+        cwd = '${workspaceFolder}',
+        stopAtBeginningOfMainSubprogram = false,
+      },
+      {
+        name = 'Debug fluid sim',
+        type = 'gdb',
+        request = 'launch',
+        program = '~/fluid-sim/bin/debug/fluid-sim',
         cwd = '${workspaceFolder}',
         stopAtBeginningOfMainSubprogram = false,
       },
     }
 
     -- C#
-    dap.adapters.coreclr = {
-      type = 'executable',
-      command = '/usr/local/bin/netcoredbg/netcoredbg',
-      args = { '--interpreter=vscode' }
-    }
-
-    dap.configurations.cs = {
-      {
-        type = "coreclr",
-        name = "Debug atria",
-        request = "launch",
-        program = function()
-          return "~/Atria2023/Atria.Web/bin/host/Debug/net6.0/Atria.Web.dll"
-        end,
-      },
-    }
+    -- dap.adapters.coreclr = {
+    --   type = 'executable',
+    --   command = '/usr/local/bin/netcoredbg/netcoredbg',
+    --   args = { '--interpreter=vscode' },
+    -- }
+    --
+    -- dap.configurations.cs = {
+    --   {
+    --     type = 'coreclr',
+    --     name = 'Debug atria',
+    --     request = 'launch',
+    --     program = function()
+    --       return '~/Atria2023/Atria.Web/bin/host/Debug/net6.0/Atria.Web.dll'
+    --     end,
+    --   },
+    -- }
 
     require('mason-nvim-dap').setup {
       automatic_setup = true,
@@ -58,7 +64,6 @@ return {
         'gdb',
       },
     }
-
 
     vim.keymap.set('n', '<F5>', dap.continue, { desc = 'Debug: Start/Continue' })
     vim.keymap.set('n', '<F1>', dap.step_into, { desc = 'Debug: Step Into' })
