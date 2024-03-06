@@ -1,9 +1,10 @@
 lastupdatecheck: 0
 recentrepos:
     - /home/tuukka/dotfiles
+    - /home/tuukka/Hyprland
+    - /home/tuukka/Hyprland/subprojects/wlroots
     - /home/tuukka/fluid-sim
     - /home/tuukka/ilsdb
-    - /home/tuukka/Hyprland
     - /home/tuukka/physics-sim
     - /home/tuukka/gosub-browser
     - /home/tuukka/terminal-emulator
