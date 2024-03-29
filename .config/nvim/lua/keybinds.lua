@@ -71,6 +71,8 @@ map('n', '<leader>sT', ':LiveGrepGitRoot<cr>', { desc = 'Search by text from git
 map('n', '<leader>sc', ':SearchConfigFiles<cr>', { desc = 'Search config files' })
 map('n', '<leader>sx', ':SearchDocs<cr>', { desc = 'Search documentation files' })
 
+map('n', '<leader>tt', '<cmd>TroubleToggle<cr>')
+
 -- neorg
 map('n', '<leader>nh', '<cmd>Neorg workspace hours<cr>')
 map('n', '<leader>nr', '<cmd>Neorg workspace notes<cr>')
@@ -86,7 +88,7 @@ map('n', '<leader>sr', require('telescope.builtin').resume, { desc = 'Search res
 map('n', '<leader>tf', '<cmd>ToggleFormatting<cr>')
 
 vim.g.copilot_no_tab_map = true
-vim.api.nvim_set_keymap('i', '<M-tab>', 'copilot#Accept("<CR>")', { silent = true, expr = true })
+vim.api.nvim_set_keymap('i', '<M-b>', 'copilot#Accept("<CR>")', { silent = true, expr = true })
 
 vim.cmd [[
   command! -nargs=1 EditWiki edit ~/Atria2023.wiki/<args>.md
