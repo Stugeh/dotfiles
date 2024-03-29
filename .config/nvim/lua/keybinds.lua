@@ -85,6 +85,9 @@ map('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = 'Searc
 map('n', '<leader>sr', require('telescope.builtin').resume, { desc = 'Search resume' })
 map('n', '<leader>tf', '<cmd>ToggleFormatting<cr>')
 
+vim.g.copilot_no_tab_map = true
+vim.api.nvim_set_keymap('i', '<M-tab>', 'copilot#Accept("<CR>")', { silent = true, expr = true })
+
 vim.cmd [[
   command! -nargs=1 EditWiki edit ~/Atria2023.wiki/<args>.md
 ]]

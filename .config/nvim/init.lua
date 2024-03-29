@@ -21,6 +21,8 @@ require('lazy').setup({
   -- Icons for page tree
   'nvim-tree/nvim-web-devicons',
 
+  'github/copilot.vim',
+
   -- Language server configs
   require 'lsp.mason',
   require 'lsp.lspconfig',
