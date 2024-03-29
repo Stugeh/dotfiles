@@ -10,6 +10,8 @@ require('lazy').setup({
   -- Set indent style based on current file
   'tpope/vim-sleuth',
 
+  'folke/trouble.nvim',
+
   -- Highlight other usages of currently hovered symbol
   'RRethy/vim-illuminate',
 
