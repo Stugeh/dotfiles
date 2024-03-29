@@ -8,8 +8,7 @@ fi
 
 
 export DOTNET_ROOT="$HOMEBREW_PREFIX/opt/dotnet@6/libexec"
-export PATH=$HOME/bin:/usr/local/bin:~/.local/bin:~/local/bin:$PATH:/opt/homebrew/bin:$PATH
-
+export PATH=$HOME/bin:/usr/local/bin:~/.local/bin:~/local/bin:$PATH:/opt/homebrew/bin:$PATH:/home/tuukka/.cargo/bin
 set -o vi
 alias thn="thunar . & disown"
 alias rn="ranger ."
@@ -29,6 +28,7 @@ alias dnr="dotnet run"
 alias nrd="npm run dev"
 alias glm="git log --author=tuukka"
 alias gnr="templ generate && go run main.go"
+alias bolt="pkill bolt && bolt"
 
 
 export EDITOR=nvim
@@ -37,7 +37,7 @@ export EDITOR=nvim
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 source ~/.config/lf/lfcd.sh
-
+source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 source ~/Repos/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Linux
@@ -55,3 +55,6 @@ export NVM_DIR="$HOME/.nvm"
 export PATH=/home/tuukka/.nvm/versions/node/v18.18.0/bin:/home/tuukka/bin:/usr/local/bin:/home/tuukka/.local/bin:/home/tuukka/local/bin:/home/tuukka/.nvm/versions/node/v18.18.0/bin:/home/tuukka/bin:/usr/local/bin:/home/tuukka/.local/bin:/home/tuukka/local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:$HOME/go/bin
 
 export PATH="/opt/homebrew/opt/dotnet@6/bin:$PATH"
+
+# To customize prompt, run `p10k configure` or edit ~/dotfiles/.p10k.zsh.
+[[ ! -f ~/dotfiles/.p10k.zsh ]] || source ~/dotfiles/.p10k.zsh
