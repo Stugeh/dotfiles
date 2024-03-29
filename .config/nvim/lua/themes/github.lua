@@ -6,7 +6,7 @@ return {
     require('github-theme').setup {
       options = {
         hide_end_of_buffer = true, -- Hide the '~' character at the end of the buffer for a cleaner look
-        transparent = true, -- Disable setting background
+        transparent = false, -- Disable setting background
         terminal_colors = true, -- Set terminal colors (vim.g.terminal_color_*) used in `:terminal`
         dim_inactive = false, -- Non focused panes set to alternative background
         module_default = true, -- Default enable value for modules
@@ -25,11 +25,10 @@ return {
         modules = { -- List of various plugins and additional options
         },
       },
-      palettes = {},
       specs = {},
       groups = {},
     }
 
-    vim.cmd 'colorscheme github_dark_high_contrast'
+    vim.cmd 'colorscheme github_dark'
   end,
 }

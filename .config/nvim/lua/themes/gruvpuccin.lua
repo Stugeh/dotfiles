@@ -67,7 +67,8 @@ return {
           crust = '#212223',
         },
       },
-      transparent_background = true,
+
+      transparent_background = false,
       show_end_of_buffer = false,
       integration_default = false,
       integrations = {
@@ -85,6 +86,7 @@ return {
         vimwiki = true,
         which_key = true,
       },
+
       highlight_overrides = {
         all = function(colors)
           return {
