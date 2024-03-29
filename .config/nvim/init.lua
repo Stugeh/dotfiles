@@ -18,6 +18,29 @@ require('lazy').setup({
   -- Surround selection with symbol
   'folke/which-key.nvim',
 
+  {
+    'p00f/clangd_extensions.nvim',
+    config = function()
+      vim.keymap.set('n', '<leader>gs', '<cmd>ClangdSwitchSourceHeader<CR>', { noremap = true, silent = true })
+      require('clangd_extensions').setup {
+        inlay_hints = {
+          inline = true,
+          only_current_line = false,
+          only_current_line_autocmd = { 'CursorHold' },
+          show_parameter_hints = true,
+          parameter_hints_prefix = '<- ',
+          other_hints_prefix = '=> ',
+          max_len_align = false,
+          max_len_align_padding = 1,
+          right_align = false,
+          right_align_padding = 7,
+          highlight = 'Comment',
+          priority = 100,
+        },
+      }
+    end,
+  },
+
   'tpope/vim-surround',
 
   -- Icons for page tree
