@@ -18,7 +18,7 @@ return {
     volar = { filetypes = { 'vue' } },
     html = { filetypes = { 'html', 'templ' } },
     tailwindcss = { filetypes = { 'html', 'vue' } },
-    clangd = { filetypes = { 'c++', 'cpp', 'hpp' }, capabilities = { offsetEncoding = 'utf-8' } },
+    clangd = { filetypes = { 'c', 'h', 'c++', 'cpp', 'hpp' }, capabilities = { offsetEncoding = 'utf-8' } },
     omnisharp = { filetypes = { 'cs', 'csharp', 'c#' } },
 
     lua_ls = {
