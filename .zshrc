@@ -5,13 +5,21 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+export DOTNET_ROOT="$HOME/dotnet"
 
-
-export DOTNET_ROOT="$HOMEBREW_PREFIX/opt/dotnet@6/libexec"
-export PATH=$HOME/bin:/usr/local/bin:~/.local/bin:~/local/bin:$PATH:/opt/homebrew/bin:$PATH:/home/tuukka/.cargo/bin
+export PATH=$HOME/bin:/usr/local/bin:~/.local/bin:~/local/bin:$PATH:/home/tuukka/.cargo/bin:$HOME/.dotnet/tools:$HOME/apps/JetBrains\ Rider-2023.3.4/bin
 set -o vi
+alias lock="swaylock --image ~/wallpaper.png"
+# Delete rider config lock
+alias rmrl="rm .var/app/com.jetbrains.Rider/config/JetBrains/Rider2023.3/.lock"
+
+alias azStart="azurite --silent --location ~/.microsoft/azurite/hilmaApi --debug c ~/.microsoft/azurite/hilmaApi/debug.log"
+alias hotspot="nmcli d wifi && nmcli d wifi connect \"Tuukka's S23\""
+alias silkkitie="nmcli d wifi && nmcli d wifi connect Silkkitie"
+alias handsome="nmcli d wifi && nmcli d wifi connect Handsome"
 alias thn="thunar . & disown"
 alias rn="ranger ."
+alias rider="nohup rider &"
 alias pics="ranger ~/Pictures"
 alias downs="ranger ~/Downloads"
 alias confs="ranger ~/.config"
@@ -37,12 +45,13 @@ export EDITOR=nvim
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 source ~/.config/lf/lfcd.sh
-source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-source ~/Repos/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Linux
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+# source ~/.repos/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/repos/powerlevel10k/powerlevel10k.zsh-theme
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/repos/zsh-vim-mode/zsh-vi-mode.plugin.zsh
+
 
 # Mac
 # source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -52,9 +61,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export PATH=/home/tuukka/.nvm/versions/node/v18.18.0/bin:/home/tuukka/bin:/usr/local/bin:/home/tuukka/.local/bin:/home/tuukka/local/bin:/home/tuukka/.nvm/versions/node/v18.18.0/bin:/home/tuukka/bin:/usr/local/bin:/home/tuukka/.local/bin:/home/tuukka/local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:$HOME/go/bin
 
-export PATH="/opt/homebrew/opt/dotnet@6/bin:$PATH"
 
 # To customize prompt, run `p10k configure` or edit ~/dotfiles/.p10k.zsh.
 [[ ! -f ~/dotfiles/.p10k.zsh ]] || source ~/dotfiles/.p10k.zsh

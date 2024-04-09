@@ -74,9 +74,6 @@ require('lazy').setup({
   -- Floating terminal
   require 'plugs.toggleterm',
 
-  -- Org style note taking
-  require 'plugs.neorg',
-
   -- Floating lazy git instance
   require 'plugs.lazygit',
 
@@ -94,10 +91,6 @@ require('lazy').setup({
   -- Floating search windows for all the things
   require 'plugs.telescope',
 
-  -- Tab bar
-  -- require 'plugs.bufferline',
-  -- require 'plugs.ChatGPT',
-  -- Page tree
   require 'plugs.nvim_tree',
 
   -- Quick code navigation
@@ -113,18 +106,11 @@ require('lazy').setup({
   require 'theme',
 
   require 'plugs.eye_candy',
-  require 'plugs.neorg',
   require 'plugs.colorizer',
 
   require 'theme',
 
   require 'plugs.dressing',
-  {
-    'David-Kunz/gen.nvim',
-    config = function()
-      require('gen').model = 'codellama'
-    end,
-  },
   {
     'pmizio/typescript-tools.nvim',
     dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
@@ -151,10 +137,6 @@ require('lazy').setup({
       }
     end,
   },
-  -- {
-  --   "hinell/lsp-timeout.nvim",
-  --   dependencies = { "neovim/nvim-lspconfig" }
-  -- }
 }, {})
 
 require 'keybinds'

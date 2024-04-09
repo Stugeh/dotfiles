@@ -74,11 +74,9 @@ map('n', '<leader>sx', ':SearchDocs<cr>', { desc = 'Search documentation files' 
 map('n', '<leader>tt', '<cmd>TroubleToggle<cr>')
 
 -- neorg
-map('n', '<leader>nh', '<cmd>Neorg workspace hours<cr>')
-map('n', '<leader>nr', '<cmd>Neorg workspace notes<cr>')
-map('n', '<leader>nm', '<cmd>Neorg workspace misc<cr>')
-map('n', '<leader>nt', '<cmd>edit ~/notes/work/todos.norg<cr>')
-map('n', '<leader>nd', '<cmd>edit ~/Atria2023.wiki')
+map('n', '<leader>nh', '<cmd>e ~/notes/work/hours.md<cr>')
+map('n', '<leader>nt', '<cmd>e ~/notes/work/todo.md<cr>')
+map('n', '<leader>nd', '<cmd>e ~/Atria2023.wiki')
 
 map('n', '<leader>ns', ':SearchNotes<cr>', { desc = 'Search neorg notes' })
 map('n', '<leader>ng', ':GrepNotes<cr>', { desc = 'Grep neorg notes' })

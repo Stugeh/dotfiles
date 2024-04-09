@@ -10,6 +10,7 @@ return {
     'html',
     'cssls',
     'tailwindcss',
+    'csharp_ls',
   },
   server_configs = {
     gopls = { filetypes = { 'go', 'templ' } },
@@ -19,7 +20,7 @@ return {
     html = { filetypes = { 'html', 'templ' } },
     tailwindcss = { filetypes = { 'html', 'vue' } },
     clangd = { filetypes = { 'c', 'h', 'c++', 'cpp', 'hpp' }, capabilities = { offsetEncoding = 'utf-8' } },
-    omnisharp = { filetypes = { 'cs', 'csharp', 'c#' } },
+    csharp_ls = { filetypes = { 'cs', 'csharp', 'c#' } },
 
     lua_ls = {
       Lua = {
