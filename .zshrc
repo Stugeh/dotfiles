@@ -6,20 +6,20 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 export DOTNET_ROOT="$HOME/dotnet"
+export GCM_CREDENTIAL_STORE="gpg"
 
-export PATH=$HOME/bin:/usr/local/bin:~/.local/bin:~/local/bin:$PATH:/home/tuukka/.cargo/bin:$HOME/.dotnet/tools:$HOME/apps/JetBrains\ Rider-2023.3.4/bin
+export PATH=$HOME/bin:/usr/local/bin:~/.local/bin:~/local/bin:$PATH:/home/tuukka/.cargo/bin:$HOME/.dotnet/tools:$HOME/apps/Rider/bin:$HOME/.config/scripts
 set -o vi
-alias lock="swaylock --image ~/wallpaper.png"
-# Delete rider config lock
-alias rmrl="rm .var/app/com.jetbrains.Rider/config/JetBrains/Rider2023.3/.lock"
 
+alias lock="~/.config/scripts/idle.sh"
+alias graph="git-igitt"
 alias azStart="azurite --silent --location ~/.microsoft/azurite/hilmaApi --debug c ~/.microsoft/azurite/hilmaApi/debug.log"
 alias hotspot="nmcli d wifi && nmcli d wifi connect \"Tuukka's S23\""
 alias silkkitie="nmcli d wifi && nmcli d wifi connect Silkkitie"
 alias handsome="nmcli d wifi && nmcli d wifi connect Handsome"
 alias thn="thunar . & disown"
 alias rn="ranger ."
-alias rider="nohup rider &"
+alias rider="nohup rider.sh &"
 alias pics="ranger ~/Pictures"
 alias downs="ranger ~/Downloads"
 alias confs="ranger ~/.config"

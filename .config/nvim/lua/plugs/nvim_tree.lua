@@ -2,7 +2,7 @@ return {
   'nvim-tree/nvim-tree.lua',
   opts = {
     view = {
-      width = 25,
+      width = 50,
     },
     actions = {
       open_file = {
