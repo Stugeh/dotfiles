@@ -10,8 +10,10 @@ return {
     'html',
     'cssls',
     'tailwindcss',
+    'vtsls',
   },
   server_configs = {
+    vtsls = {},
     gopls = { filetypes = { 'go', 'templ' } },
     templ = { filetypes = { 'templ' } },
     rust_analyzer = { check = { command = 'clippy' } },

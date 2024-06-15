@@ -32,7 +32,8 @@ map('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message
 map('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 map('n', '<leader>lq', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
-map('n', '<leader>e', '<cmd>NvimTreeToggle<CR>')
+-- map('n', '<leader>e', '<cmd>NvimTreeToggle<CR>')
+map('n', '<leader>e', '<cmd>Lexplore<CR>')
 map('n', '<leader>w', '<cmd>w<CR>')
 map('n', '<leader>W', '<cmd>noautocmd w<cr>')
 map('n', '<leader>h', '<cmd>noh<cr>')
@@ -50,7 +51,7 @@ map('n', '<leader>\\4', '<cmd>4ToggleTerm<cr>')
 map('n', '<leader>\\5', '<cmd>5ToggleTerm<cr>')
 map('n', '<leader>\\6', '<cmd>6ToggleTerm<cr>')
 
-vim.api.nvim_set_keymap('n', '<leader>\\r', '<cmd>lua Ranger_toggle()<CR>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<leader>e', '<cmd>lua Ranger_toggle()<CR>', { noremap = true, silent = true })
 
 -- gen nvim
 map('v', '<C-;>', ':Gen<CR>')
@@ -58,6 +59,9 @@ map('n', '<C-;>', ':Gen<CR>')
 
 map('n', '<C-l>', ':wincmd l<CR>')
 map('n', '<C-h>', ':wincmd h<CR>')
+map('n', '<C-k>', ':wincmd k<CR>')
+map('n', '<C-j>', ':wincmd j<CR>')
+
 
 map('n', '<leader>ws', ':vsplit<CR>')
 
@@ -70,6 +74,7 @@ map('n', '<leader>st', require('telescope.builtin').live_grep, { desc = 'Search 
 map('n', '<leader>sT', ':LiveGrepGitRoot<cr>', { desc = 'Search by text from git Root' })
 map('n', '<leader>sc', ':SearchConfigFiles<cr>', { desc = 'Search config files' })
 map('n', '<leader>sx', ':SearchDocs<cr>', { desc = 'Search documentation files' })
+map('n', '<leader>gw', ':Telescope workspaces<cr>', { desc = 'Search workspaces' })
 
 map('n', '<leader>tt', '<cmd>TroubleToggle<cr>')
 
@@ -82,6 +87,9 @@ map('n', '<leader>nd', '<cmd>edit ~/Atria2023.wiki')
 
 map('n', '<leader>ns', ':SearchNotes<cr>', { desc = 'Search neorg notes' })
 map('n', '<leader>ng', ':GrepNotes<cr>', { desc = 'Grep neorg notes' })
+
+map('n', '<leader>gm', ':MarksListBuf<cr>', { desc = 'List buffer marks' })
+map('n', '<leader>gM', ':MarksListGlobal<cr>', { desc = 'List global marks' })
 
 map('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = 'Search diagnostics' })
 map('n', '<leader>sr', require('telescope.builtin').resume, { desc = 'Search resume' })

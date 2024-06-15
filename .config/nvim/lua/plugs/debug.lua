@@ -22,14 +22,6 @@ return {
 
     dap.configurations.cpp = {
       {
-        name = 'Debug Hyprland',
-        type = 'gdb',
-        request = 'launch',
-        program = '~/Hyprland/build/Hyprland',
-        cwd = '${workspaceFolder}',
-        stopAtBeginningOfMainSubprogram = false,
-      },
-      {
         name = 'Debug fluid sim',
         type = 'gdb',
         request = 'launch',

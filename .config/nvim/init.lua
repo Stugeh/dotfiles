@@ -9,6 +9,15 @@ require('lazy').setup({
   ui = { border = 'rounded' },
   -- Set indent style based on current file
   'tpope/vim-sleuth',
+  {
+    'NeogitOrg/neogit',
+    dependencies = {
+      "nvim-lua/plenary.nvim",  -- required
+      "sindrets/diffview.nvim", -- optional - Diff integration
+      "nvim-telescope/telescope.nvim",
+    },
+    config = true
+  },
 
   'folke/trouble.nvim',
 
@@ -16,8 +25,7 @@ require('lazy').setup({
   'RRethy/vim-illuminate',
 
   -- Surround selection with symbol
-  'folke/which-key.nvim',
-
+  -- 'folke/which-key.nvim',
   {
     'p00f/clangd_extensions.nvim',
     config = function()
@@ -41,43 +49,39 @@ require('lazy').setup({
     end,
   },
 
+  {
+    "natecraddock/workspaces.nvim",
+    config = function()
+      require 'workspaces'.setup {
+
+      }
+    end
+  },
+
+  {
+    "chentoast/marks.nvim",
+    config = function()
+      require 'marks'.setup {
+
+      }
+    end
+  },
+
   'tpope/vim-surround',
-
-  -- Icons for page tree
-  'nvim-tree/nvim-web-devicons',
-
-  'github/copilot.vim',
 
   -- Language server configs
   require 'lsp.mason',
   require 'lsp.lspconfig',
   require 'lsp.treesitter',
 
-  -- Formatters
   require 'lsp.conform',
-
-  -- Linters
   require 'lsp.nvim-lint',
-
-  {
-    'LunarVim/breadcrumbs.nvim',
-    config = function()
-      require('breadcrumbs').setup()
-    end,
-  },
 
   require 'plugs.eyeliner',
   require 'plugs.ufo',
-  -- Tooltips for remembering keybinds
-  -- require 'plugs.whichkey',
-  --
-  -- Floating terminal
+
   require 'plugs.toggleterm',
 
-  -- Org style note taking
-  require 'plugs.neorg',
-
-  -- Floating lazy git instance
   require 'plugs.lazygit',
 
   -- Code completion
@@ -94,11 +98,7 @@ require('lazy').setup({
   -- Floating search windows for all the things
   require 'plugs.telescope',
 
-  -- Tab bar
-  -- require 'plugs.bufferline',
-  -- require 'plugs.ChatGPT',
-  -- Page tree
-  require 'plugs.nvim_tree',
+  require 'plugs.netrw',
 
   -- Quick code navigation
   require 'plugs.leap',
@@ -112,49 +112,11 @@ require('lazy').setup({
 
   require 'theme',
 
-  require 'plugs.eye_candy',
-  require 'plugs.neorg',
+  -- require 'plugs.eye_candy',
   require 'plugs.colorizer',
 
   require 'theme',
 
-  require 'plugs.dressing',
-  {
-    'David-Kunz/gen.nvim',
-    config = function()
-      require('gen').model = 'codellama'
-    end,
-  },
-  {
-    'pmizio/typescript-tools.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
-    opts = {},
-    config = function()
-      require('typescript-tools').setup {
-        settings = {
-          expose_as_code_action = 'all',
-          tsserver_plugins = {},
-          tsserver_file_preferences = { 'vue', 'ts', 'tsx', 'typescriptreact', 'typescript' },
-          tsserver_locale = 'en',
-          complete_function_calls = true,
-          include_completions_with_insert_text = true,
-          -- possible values: ("off"|"all"|"implementations_only"|"references_only")
-          code_lens = 'references_only',
-          -- by default code lenses are displayed on all referencable values and for some of you it can
-          -- be too much this option reduce count of them by removing member references from lenses
-          disable_member_code_lens = true,
-          jsx_close_tag = {
-            enable = true,
-            filetypes = { 'vue', 'ts', 'tsx', 'typescriptreact', 'typescript' },
-          },
-        },
-      }
-    end,
-  },
-  -- {
-  --   "hinell/lsp-timeout.nvim",
-  --   dependencies = { "neovim/nvim-lspconfig" }
-  -- }
 }, {})
 
 require 'keybinds'

@@ -49,12 +49,12 @@ local function search_config_files()
   }
 end
 
-local Terminal = require('toggleterm.terminal').Terminal
-local ranger = Terminal:new { cmd = 'ranger ~', hidden = true, direction = 'float' }
-
-function Ranger_toggle()
-  ranger:toggle()
-end
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "netrw",
+  callback = function()
+    vim.bo.bufhidden = "wipe"
+  end,
+})
 
 vim.api.nvim_create_user_command('ToggleFormatting', toggle_autoformat, {
   desc = 'Disable autoformat-on-save',

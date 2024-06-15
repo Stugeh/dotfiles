@@ -103,56 +103,56 @@ return {
         }),
       },
 
-      formatting = {
-        fields = { 'kind', 'abbr', 'menu' },
-        format = function(entry, vim_item)
-          vim_item.menu = ({
-            nvim_lsp = '',
-            nvim_lua = '',
-            luasnip = '',
-            buffer = '',
-            path = '',
-            emoji = '',
-          })[entry.source.name]
-          vim_item.kind = ({
-            Text = ' ',
-            Method = ' ',
-            Function = '',
-            Constructor = ' ',
-            Field = 'ﴲ',
-            Variable = ' ',
-            Class = ' ',
-            Interface = 'ﰮ',
-            Module = ' ',
-            Property = '襁',
-            Unit = '',
-            Value = '',
-            Enum = '練',
-            Keyword = '',
-            Snippet = '',
-            Color = '',
-            File = '',
-            Reference = '',
-            Folder = '',
-            EnumMember = '',
-            Constant = 'ﲀ',
-            Struct = 'ﳤ',
-            Event = '',
-            Operator = '',
-            TypeParameter = '',
-          })[vim_item.kind]
-
-          if entry.source.name == 'crates' then
-            vim_item.kind_hl_group = 'CmpItemKindCrate'
-          end
-
-          if entry.source.name == 'lab.quick_data' then
-            vim_item.kind_hl_group = 'CmpItemKindConstant'
-          end
-
-          return vim_item
-        end,
-      },
+      -- formatting = {
+      --   fields = { 'kind', 'abbr', 'menu' },
+      --   format = function(entry, vim_item)
+      --     --   vim_item.menu = ({
+      --     --     nvim_lsp = '',
+      --     --     nvim_lua = '',
+      --     --     luasnip = '',
+      --     --     buffer = '',
+      --     --     path = '',
+      --     --     emoji = '',
+      --     --   })[entry.source.name]
+      --     --   vim_item.kind = ({
+      --     --     Text = ' ',
+      --     --     Method = ' ',
+      --     --     Function = '',
+      --     --     Constructor = ' ',
+      --     --     Field = 'ﴲ',
+      --     --     Variable = ' ',
+      --     --     Class = ' ',
+      --     --     Interface = 'ﰮ',
+      --     --     Module = ' ',
+      --     --     Property = '襁',
+      --     --     Unit = '',
+      --     --     Value = '',
+      --     --     Enum = '練',
+      --     --     Keyword = '',
+      --     --     Snippet = '',
+      --     --     Color = '',
+      --     --     File = '',
+      --     --     Reference = '',
+      --     --     Folder = '',
+      --     --     EnumMember = '',
+      --     --     Constant = 'ﲀ',
+      --     --     Struct = 'ﳤ',
+      --     --     Event = '',
+      --     --     Operator = '',
+      --     --     TypeParameter = '',
+      --     --   })[vim_item.kind]
+      --     --
+      --     --   if entry.source.name == 'crates' then
+      --     --     vim_item.kind_hl_group = 'CmpItemKindCrate'
+      --     --   end
+      --     --
+      --     --   if entry.source.name == 'lab.quick_data' then
+      --     --     vim_item.kind_hl_group = 'CmpItemKindConstant'
+      --     --   end
+      --     --
+      --     --   return vim_item
+      --   end,
+      -- },
       sources = {
         {
           name = 'nvim_lsp',

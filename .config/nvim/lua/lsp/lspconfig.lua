@@ -27,14 +27,10 @@ local M = {
 
     -- enable inlay hints if available
     if client.supports_method 'textDocument/inlayHint' then
-      vim.lsp.inlay_hint.enable(bufnr, true)
+      vim.lsp.inlay_hint.enable()
     end
   end,
 
-  toggle_inlay_hints = function()
-    local bufnr = vim.api.nvim_get_current_buf()
-    vim.lsp.inlay_hint.enable(bufnr, not vim.lsp.inlay_hint.is_enabled(bufnr))
-  end,
 }
 
 function M.common_capabilities()
@@ -42,11 +38,6 @@ function M.common_capabilities()
   capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
   capabilities.textDocument.completion.completionItem.snippetSupport = true
   return capabilities
-end
-
-M.toggle_inlay_hints = function()
-  local bufnr = vim.api.nvim_get_current_buf()
-  vim.lsp.inlay_hint.enable(bufnr, not vim.lsp.inlay_hint.is_enabled(bufnr))
 end
 
 function M.config()

@@ -1,5 +1,11 @@
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
+vim.g.netrw_liststyle = 3
+vim.g.netrw_preview = 1
+vim.g.netrw_winsize = 50
+vim.g.netrw_browse_split = 4
+vim.g.netrw_banner = 0
+vim.g.netrw_sizestyle = 'H'
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.opt.termguicolors = true
@@ -39,6 +45,33 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
   group = highlight_group,
   pattern = '*',
+})
+
+
+local project_drawer = vim.api.nvim_create_augroup("ProjectDrawer", { clear = true })
+
+-- Add an autocommand to the group
+vim.api.nvim_create_autocmd("VimEnter", {
+  group = project_drawer,
+  command = "Lexplore"
+})
+
+local function close_netrw_buffers()
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    if vim.api.nvim_buf_is_loaded(buf) and vim.bo[buf].filetype == 'netrw' then
+      vim.api.nvim_buf_delete(buf, { force = true })
+    end
+  end
+end
+
+-- Add an autocommand to the group to close netrw buffers when entering a non-netrw buffer
+vim.api.nvim_create_autocmd("BufEnter", {
+  group = project_drawer,
+  callback = function()
+    if vim.bo.filetype ~= 'netrw' then
+      close_netrw_buffers()
+    end
+  end
 })
 
 vim.filetype.add {
