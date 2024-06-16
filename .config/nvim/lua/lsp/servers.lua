@@ -1,5 +1,5 @@
 return {
-  server_list = {
+  ensure_installed = {
     'gopls',
     'templ',
     'rust_analyzer',
@@ -11,6 +11,39 @@ return {
     'cssls',
     'tailwindcss',
     'vtsls',
+  },
+  lint_fmt = {
+    "prettier",
+    "rustywind",
+    'rustfmt',
+    'goimports',
+    'gofumpt',
+    "volar",
+    "eslint_d",
+    -- "cpplint"
+  },
+  fmt_by_language = {
+    javascript = { 'prettier' },
+    typescript = { 'prettier' },
+    vue = { 'prettier' },
+    tailwind = { 'rustywind' },
+    css = { 'prettier' },
+    html = { 'prettier' },
+    json = { 'prettier' },
+    yaml = { 'prettier' },
+    markdown = { 'prettier' },
+    lua = { 'stylua' },
+    rust = { 'rustfmt' },
+    go = { 'goimports', 'gofmt' },
+    ['_'] = { 'trim_whitespace' },
+  },
+  linters_by_language = {
+    javascript = { 'eslint_d' },
+    typescript = { 'eslint_d' },
+    javascriptreact = { 'eslint_d' },
+    typescriptreact = { 'eslint_d' },
+    vue = { 'volar', 'eslint_d' },
+    -- cpp = { 'cpplint' },
   },
   server_configs = {
     vtsls = {},

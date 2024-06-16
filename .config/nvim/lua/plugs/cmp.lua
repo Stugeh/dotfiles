@@ -7,10 +7,6 @@ return {
       event = 'InsertEnter',
     },
     {
-      'hrsh7th/cmp-emoji',
-      event = 'InsertEnter',
-    },
-    {
       'hrsh7th/cmp-buffer',
       event = 'InsertEnter',
     },
@@ -44,7 +40,7 @@ return {
     luasnip.filetype_extend('vue', { 'html' })
     luasnip.filetype_extend('typescriptreact', { 'html' })
 
-    require('luasnip/loaders/from_vscode').lazy_load()
+    require('luasnip.loaders.from_vscode').lazy_load()
 
     local check_backspace = function()
       local col = vim.fn.col '.' - 1
@@ -54,7 +50,7 @@ return {
     cmp.setup {
       snippet = {
         expand = function(args)
-          luasnip.lsp_expand(args.body) -- For `luasnip` users.
+          luasnip.lsp_expand(args.body)
         end,
       },
       mapping = cmp.mapping.preset.insert {
@@ -103,56 +99,6 @@ return {
         }),
       },
 
-      -- formatting = {
-      --   fields = { 'kind', 'abbr', 'menu' },
-      --   format = function(entry, vim_item)
-      --     --   vim_item.menu = ({
-      --     --     nvim_lsp = '',
-      --     --     nvim_lua = '',
-      --     --     luasnip = '',
-      --     --     buffer = '',
-      --     --     path = '',
-      --     --     emoji = '',
-      --     --   })[entry.source.name]
-      --     --   vim_item.kind = ({
-      --     --     Text = ' ',
-      --     --     Method = ' ',
-      --     --     Function = '',
-      --     --     Constructor = ' ',
-      --     --     Field = 'ﴲ',
-      --     --     Variable = ' ',
-      --     --     Class = ' ',
-      --     --     Interface = 'ﰮ',
-      --     --     Module = ' ',
-      --     --     Property = '襁',
-      --     --     Unit = '',
-      --     --     Value = '',
-      --     --     Enum = '練',
-      --     --     Keyword = '',
-      --     --     Snippet = '',
-      --     --     Color = '',
-      --     --     File = '',
-      --     --     Reference = '',
-      --     --     Folder = '',
-      --     --     EnumMember = '',
-      --     --     Constant = 'ﲀ',
-      --     --     Struct = 'ﳤ',
-      --     --     Event = '',
-      --     --     Operator = '',
-      --     --     TypeParameter = '',
-      --     --   })[vim_item.kind]
-      --     --
-      --     --   if entry.source.name == 'crates' then
-      --     --     vim_item.kind_hl_group = 'CmpItemKindCrate'
-      --     --   end
-      --     --
-      --     --   if entry.source.name == 'lab.quick_data' then
-      --     --     vim_item.kind_hl_group = 'CmpItemKindConstant'
-      --     --   end
-      --     --
-      --     --   return vim_item
-      --   end,
-      -- },
       sources = {
         {
           name = 'nvim_lsp',
@@ -177,9 +123,9 @@ return {
         { name = 'nvim_lua' },
         { name = 'buffer' },
         { name = 'path' },
-        { name = 'calc' },
-        { name = 'treesitter' },
         { name = 'crates' },
+        { name = 'treesitter' },
+        { name = 'calc' },
       },
       confirm_opts = {
         behavior = cmp.ConfirmBehavior.Replace,

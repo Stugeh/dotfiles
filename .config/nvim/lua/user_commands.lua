@@ -63,3 +63,33 @@ vim.api.nvim_create_user_command('ToggleFormatting', toggle_autoformat, {
 
 vim.api.nvim_create_user_command('LiveGrepGitRoot', live_grep_git_root, {})
 vim.api.nvim_create_user_command('SearchConfigFiles', search_config_files, {})
+
+-- Briefly highlight selection when yanking
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = '*',
+})
+
+
+local project_drawer = vim.api.nvim_create_augroup("ProjectDrawer", { clear = true })
+
+local function close_netrw_buffers()
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    if vim.api.nvim_buf_is_loaded(buf) and vim.bo[buf].filetype == 'netrw' then
+      vim.api.nvim_buf_delete(buf, { force = true })
+    end
+  end
+end
+
+vim.api.nvim_create_autocmd("BufEnter", {
+  group = project_drawer,
+  callback = function()
+    if vim.bo.filetype ~= 'netrw' then
+      close_netrw_buffers()
+    end
+  end
+})

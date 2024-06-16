@@ -34,6 +34,8 @@ map('n', '<leader>lq', vim.diagnostic.setloclist, { desc = 'Open diagnostics lis
 
 -- map('n', '<leader>e', '<cmd>NvimTreeToggle<CR>')
 map('n', '<leader>e', '<cmd>Lexplore<CR>')
+-- map('n', '<leader>e', '<cmd>Oil<CR>')
+-- map('n', '<leader>e', '<cmd>lua MiniFiles.open()<CR>')
 map('n', '<leader>w', '<cmd>w<CR>')
 map('n', '<leader>W', '<cmd>noautocmd w<cr>')
 map('n', '<leader>h', '<cmd>noh<cr>')
@@ -76,7 +78,7 @@ map('n', '<leader>sc', ':SearchConfigFiles<cr>', { desc = 'Search config files' 
 map('n', '<leader>sx', ':SearchDocs<cr>', { desc = 'Search documentation files' })
 map('n', '<leader>gw', ':Telescope workspaces<cr>', { desc = 'Search workspaces' })
 
-map('n', '<leader>tt', '<cmd>TroubleToggle<cr>')
+map('n', '<leader>tt', '<cmd>Trouble diagnostics<cr>')
 
 -- neorg
 map('n', '<leader>nh', '<cmd>Neorg workspace hours<cr>')
