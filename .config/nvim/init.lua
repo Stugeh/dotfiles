@@ -27,7 +27,7 @@ require('lazy').setup({
   require 'plugs.lazygit',
   require 'plugs.cmp',
   require 'plugs.gitsigns',
-  require 'plugs.indent_blankline',
+  -- require 'plugs.indent_blankline',
   require 'plugs.comment',
   require 'plugs.telescope',
   require 'plugs.netrw',
@@ -36,9 +36,11 @@ require('lazy').setup({
   require 'plugs.eye_candy',
   require 'plugs.debug',
   require 'plugs.colorizer',
-  require 'theme',
+  require 'theme'
 }, {})
+
 
 require 'user_commands'
 require 'keybinds'
+vim.api.nvim_set_hl(0, 'StatusLine', { fg = 'orange' })
 -- vim: ts=2 sts=2 sw=2 et
