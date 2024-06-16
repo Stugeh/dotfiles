@@ -21,6 +21,12 @@ map('n', '*', '*zz', opts)
 map('n', '#', '#zz', opts)
 map('n', 'g*', 'g*zz', opts)
 map('n', 'g#', 'g#zz', opts)
+map('n', '<Up>', 'kzz', { noremap = true, silent = true })
+map('n', '<Down>', 'jzz', { noremap = true, silent = true })
+map('n', '<Left>', 'hzz', { noremap = true, silent = true })
+map('n', '<Right>', 'lzz', { noremap = true, silent = true })
+map('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true })
+map('n', '<C-d>', '<C-d>zz', { noremap = true, silent = true })
 
 -- Remap for dealing with word wrap
 map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
