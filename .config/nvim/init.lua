@@ -12,11 +12,11 @@ require('lazy').setup({
   "tpope/vim-surround",
   'eandrju/cellular-automaton.nvim',
   'RRethy/vim-illuminate',
-  {
-    'NeogitOrg/neogit',
-    dependencies = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim", "nvim-telescope/telescope.nvim" },
-    config = true
-  },
+  -- {
+  --   'NeogitOrg/neogit',
+  --   dependencies = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim", "nvim-telescope/telescope.nvim" },
+  --   config = true
+  -- },
   { 'folke/trouble.nvim',           config = true },
   { "natecraddock/workspaces.nvim", config = true },
   { "chentoast/marks.nvim",         config = true },

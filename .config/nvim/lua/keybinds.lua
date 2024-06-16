@@ -51,16 +51,6 @@ map('n', '<S-l>', '<cmd>bn<cr>')
 map('n', '<S-h>', '<cmd>bp<cr>')
 map('n', '<leader>c', '<cmd>bd<cr>')
 
--- ToggleTerm
-map('n', '<leader>\\1', '<cmd>1ToggleTerm<cr>')
-map('n', '<leader>\\2', '<cmd>2ToggleTerm<cr>')
-map('n', '<leader>\\3', '<cmd>3ToggleTerm<cr>')
-map('n', '<leader>\\4', '<cmd>4ToggleTerm<cr>')
-map('n', '<leader>\\5', '<cmd>5ToggleTerm<cr>')
-map('n', '<leader>\\6', '<cmd>6ToggleTerm<cr>')
-
--- vim.api.nvim_set_keymap('n', '<leader>e', '<cmd>lua Ranger_toggle()<CR>', { noremap = true, silent = true })
-
 -- gen nvim
 map('v', '<C-;>', ':Gen<CR>')
 map('n', '<C-;>', ':Gen<CR>')
