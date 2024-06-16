@@ -29,6 +29,7 @@ alias nrd="npm run dev"
 alias glm="git log --author=tuukka"
 alias gnr="templ generate && go run main.go"
 alias bolt="pkill bolt && bolt"
+alias arcade="cd ~/repos/solita-arkade/code/SolitaArcade && qmake6 && make && ./build/SolitaArcade"
 
 
 export EDITOR=nvim
@@ -55,6 +56,8 @@ export NVM_DIR="$HOME/.nvm"
 export PATH=/home/tuukka/.nvm/versions/node/v18.18.0/bin:/home/tuukka/bin:/usr/local/bin:/home/tuukka/.local/bin:/home/tuukka/local/bin:/home/tuukka/.nvm/versions/node/v18.18.0/bin:/home/tuukka/bin:/usr/local/bin:/home/tuukka/.local/bin:/home/tuukka/local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:$HOME/go/bin
 
 export PATH="/opt/homebrew/opt/dotnet@6/bin:$PATH"
+
+[[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
 
 # To customize prompt, run `p10k configure` or edit ~/dotfiles/.p10k.zsh.
 [[ ! -f ~/dotfiles/.p10k.zsh ]] || source ~/dotfiles/.p10k.zsh
