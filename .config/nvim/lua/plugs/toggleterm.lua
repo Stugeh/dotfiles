@@ -4,5 +4,4 @@ return {
     direction = 'float',
     open_mapping = [[<c-\>]],
   },
-  config = true
 }

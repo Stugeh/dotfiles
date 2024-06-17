@@ -2,6 +2,7 @@ return {
   'nvim-treesitter/nvim-treesitter',
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
+    'windwp/nvim-ts-autotag',
   },
   config = function()
     vim.defer_fn(function()
@@ -13,6 +14,7 @@ return {
         auto_install = true,
         highlight = { enable = true },
         indent = { enable = true },
+        autotag = { enable = true },
         incremental_selection = {
           enable = true,
           keymaps = {

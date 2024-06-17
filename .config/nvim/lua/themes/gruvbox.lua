@@ -11,4 +11,9 @@ return {
     vim.g.gruvbox_material_invert_selection = true
     vim.cmd.colorscheme 'gruvbox-material'
   end,
+
+  -- "ellisonleao/gruvbox.nvim",
+  -- priority = 1000,
+  -- config = true,
+  -- opts = ...
 }

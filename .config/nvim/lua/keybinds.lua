@@ -21,6 +21,12 @@ map('n', '*', '*zz', opts)
 map('n', '#', '#zz', opts)
 map('n', 'g*', 'g*zz', opts)
 map('n', 'g#', 'g#zz', opts)
+map('n', '<Up>', 'kzz', { noremap = true, silent = true })
+map('n', '<Down>', 'jzz', { noremap = true, silent = true })
+map('n', '<Left>', 'hzz', { noremap = true, silent = true })
+map('n', '<Right>', 'lzz', { noremap = true, silent = true })
+map('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true })
+map('n', '<C-d>', '<C-d>zz', { noremap = true, silent = true })
 
 -- Remap for dealing with word wrap
 map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -33,10 +39,9 @@ map('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Open floating diagnos
 map('n', '<leader>lq', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 -- map('n', '<leader>e', '<cmd>NvimTreeToggle<CR>')
-map('n', '<leader>e', '<cmd>lua MiniFiles.open()<CR>')
+map('n', '<leader>e', '<cmd>Lexplore<CR>')
 -- map('n', '<leader>e', '<cmd>Oil<CR>')
-
-map('n', '<leader>gw', '<cmd>Telescope workspaces<CR>')
+-- map('n', '<leader>e', '<cmd>lua MiniFiles.open()<CR>')
 map('n', '<leader>w', '<cmd>w<CR>')
 map('n', '<leader>W', '<cmd>noautocmd w<cr>')
 map('n', '<leader>h', '<cmd>noh<cr>')
@@ -46,22 +51,15 @@ map('n', '<S-l>', '<cmd>bn<cr>')
 map('n', '<S-h>', '<cmd>bp<cr>')
 map('n', '<leader>c', '<cmd>bd<cr>')
 
--- ToggleTerm
-map('n', '<leader>\\1', '<cmd>1ToggleTerm<cr>')
-map('n', '<leader>\\2', '<cmd>2ToggleTerm<cr>')
-map('n', '<leader>\\3', '<cmd>3ToggleTerm<cr>')
-map('n', '<leader>\\4', '<cmd>4ToggleTerm<cr>')
-map('n', '<leader>\\5', '<cmd>5ToggleTerm<cr>')
-map('n', '<leader>\\6', '<cmd>6ToggleTerm<cr>')
-
-vim.api.nvim_set_keymap('n', '<leader>\\r', '<cmd>lua Ranger_toggle()<CR>', { noremap = true, silent = true })
-
 -- gen nvim
 map('v', '<C-;>', ':Gen<CR>')
 map('n', '<C-;>', ':Gen<CR>')
 
 map('n', '<C-l>', ':wincmd l<CR>')
 map('n', '<C-h>', ':wincmd h<CR>')
+map('n', '<C-k>', ':wincmd k<CR>')
+map('n', '<C-j>', ':wincmd j<CR>')
+
 
 map('n', '<leader>ws', ':vsplit<CR>')
 
@@ -74,16 +72,22 @@ map('n', '<leader>st', require('telescope.builtin').live_grep, { desc = 'Search 
 map('n', '<leader>sT', ':LiveGrepGitRoot<cr>', { desc = 'Search by text from git Root' })
 map('n', '<leader>sc', ':SearchConfigFiles<cr>', { desc = 'Search config files' })
 map('n', '<leader>sx', ':SearchDocs<cr>', { desc = 'Search documentation files' })
+map('n', '<leader>gw', ':Telescope workspaces<cr>', { desc = 'Search workspaces' })
 
-map('n', '<leader>tt', '<cmd>TroubleToggle<cr>')
+map('n', '<leader>tt', '<cmd>Trouble diagnostics<cr>')
 
 -- neorg
-map('n', '<leader>nh', '<cmd>e ~/notes/work/hours.md<cr>')
-map('n', '<leader>nt', '<cmd>e ~/notes/work/todo.md<cr>')
-map('n', '<leader>nd', '<cmd>e ~/Atria2023.wiki')
+map('n', '<leader>nh', '<cmd>Neorg workspace hours<cr>')
+map('n', '<leader>nr', '<cmd>Neorg workspace notes<cr>')
+map('n', '<leader>nm', '<cmd>Neorg workspace misc<cr>')
+map('n', '<leader>nt', '<cmd>edit ~/notes/work/todos.norg<cr>')
+map('n', '<leader>nd', '<cmd>edit ~/Atria2023.wiki')
 
 map('n', '<leader>ns', ':SearchNotes<cr>', { desc = 'Search neorg notes' })
 map('n', '<leader>ng', ':GrepNotes<cr>', { desc = 'Grep neorg notes' })
+
+map('n', '<leader>gm', ':MarksListBuf<cr>', { desc = 'List buffer marks' })
+map('n', '<leader>gM', ':MarksListGlobal<cr>', { desc = 'List global marks' })
 
 map('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = 'Search diagnostics' })
 map('n', '<leader>sr', require('telescope.builtin').resume, { desc = 'Search resume' })
