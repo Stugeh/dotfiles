@@ -5,9 +5,11 @@ return {
     local conform = require 'conform'
     conform.setup {
       formatters_by_ft = {
-        javascript = { 'prettier' },
-        typescript = { 'prettier' },
-        vue = { 'prettier' },
+        javascript = { 'eslint_d' },
+        typescript = { 'eslint_d' },
+        typescriptreact = { 'eslint_d' },
+        javascriptreact = { 'eslint_d' },
+        vue = { 'eslint_d' },
         tailwind = { 'rustywind' },
 
         css = { 'prettier' },
@@ -28,7 +30,7 @@ return {
 
       format_on_save = function(bufnr)
         if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
-          return
+          return {}
         end
         return {
           lsp_fallback = true,

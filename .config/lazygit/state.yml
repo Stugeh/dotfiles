@@ -1,8 +1,26 @@
 lastupdatecheck: 0
 recentrepos:
-- /home/tuukka/dotfiles
-- /home/tuukka/hilma/Hilma
-- /home/tuukka/notes
+    - /home/tuukka/dotfiles
+    - /home/tuukka/hilma/Hilma
+    - /home/tuukka/repos/solita-arkade
+    - /home/tuukka/repos/neovim
+    - /home/tuukka/hilma/hilma-tendering
+    - /home/tuukka/repos/jeqqu
+    - /home/tuukka/repos/dwm
+    - /home/tuukka/hilma/espd
+    - /home/tuukka/notes
 startuppopupversion: 5
-customcommandshistory: []
+lastversion: 0.42.0
+customcommandshistory:
+    - git reset
+    - git reset --hard
+    - q
+    - exit
+    - git add *
 hidecommandlog: false
+ignorewhitespaceindiffview: false
+diffcontextsize: 1
+localbranchsortorder: recency
+remotebranchsortorder: alphabetical
+gitlogorder: topo-order
+gitlogshowgraph: always

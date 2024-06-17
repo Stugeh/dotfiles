@@ -15,25 +15,29 @@ local M = {
       vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
     end
 
+    local lspRefs = function()
+      require('telescope.builtin').lsp_references { show_line = false }
+    end
+
+    local lspDefs = function()
+      require('telescope.builtin').lsp_definitions { show_line = false }
+    end
+
+    local lspImps = function()
+      require('telescope.builtin').lsp_implementations { show_line = false }
+    end
     nmap('<leader>rn', vim.lsp.buf.rename, 'Rename')
     nmap('<leader>la', vim.lsp.buf.code_action, 'Code actions')
-    nmap('gd', require('telescope.builtin').lsp_definitions, 'Definition')
-    nmap('gr', require('telescope.builtin').lsp_references, 'References')
-    nmap('gi', require('telescope.builtin').lsp_implementations, 'Implementation')
+    nmap('gd', lspDefs, 'Definition')
+    nmap('gr', lspRefs, 'References')
+    nmap('gi', lspImps, 'Implementation')
     nmap('gt', require('telescope.builtin').lsp_type_definitions, 'Type')
     nmap('<leader>ss', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Search symbols')
     nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
     nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
     -- enable inlay hints if available
-    if client.supports_method 'textDocument/inlayHint' then
-      vim.lsp.inlay_hint.enable(bufnr, true)
-    end
-  end,
-
-  toggle_inlay_hints = function()
-    local bufnr = vim.api.nvim_get_current_buf()
-    vim.lsp.inlay_hint.enable(bufnr, not vim.lsp.inlay_hint.is_enabled(bufnr))
+    vim.lsp.inlay_hint.enable(true)
   end,
 }
 
@@ -42,11 +46,6 @@ function M.common_capabilities()
   capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
   capabilities.textDocument.completion.completionItem.snippetSupport = true
   return capabilities
-end
-
-M.toggle_inlay_hints = function()
-  local bufnr = vim.api.nvim_get_current_buf()
-  vim.lsp.inlay_hint.enable(bufnr, not vim.lsp.inlay_hint.is_enabled(bufnr))
 end
 
 function M.config()
@@ -58,6 +57,8 @@ function M.config()
   local server_configs = require('lsp.servers').server_configs
 
   local lspconfig = require 'lspconfig'
+
+  lspconfig.contextive.setup { on_attach = M.on_attach, capabilities = M.common_capabilities() }
 
   for server, config in pairs(server_configs) do
     local opts = {

@@ -32,7 +32,11 @@ map('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message
 map('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 map('n', '<leader>lq', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
-map('n', '<leader>e', '<cmd>NvimTreeToggle<CR>')
+-- map('n', '<leader>e', '<cmd>NvimTreeToggle<CR>')
+map('n', '<leader>e', '<cmd>lua MiniFiles.open()<CR>')
+-- map('n', '<leader>e', '<cmd>Oil<CR>')
+
+map('n', '<leader>gw', '<cmd>Telescope workspaces<CR>')
 map('n', '<leader>w', '<cmd>w<CR>')
 map('n', '<leader>W', '<cmd>noautocmd w<cr>')
 map('n', '<leader>h', '<cmd>noh<cr>')

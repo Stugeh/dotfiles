@@ -40,22 +40,22 @@ return {
     }
 
     -- C#
-    -- dap.adapters.coreclr = {
-    --   type = 'executable',
-    --   command = '/usr/local/bin/netcoredbg/netcoredbg',
-    --   args = { '--interpreter=vscode' },
-    -- }
-    --
-    -- dap.configurations.cs = {
-    --   {
-    --     type = 'coreclr',
-    --     name = 'Debug atria',
-    --     request = 'launch',
-    --     program = function()
-    --       return '~/Atria2023/Atria.Web/bin/host/Debug/net6.0/Atria.Web.dll'
-    --     end,
-    --   },
-    -- }
+    dap.adapters.coreclr = {
+      type = 'executable',
+      command = '/usr/local/netcoredbg',
+      args = { '--interpreter=vscode' },
+    }
+
+    dap.configurations.cs = {
+      {
+        type = 'coreclr',
+        name = 'Debug atria',
+        request = 'launch',
+        program = function()
+          return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
+        end,
+      },
+    }
 
     require('mason-nvim-dap').setup {
       automatic_setup = true,

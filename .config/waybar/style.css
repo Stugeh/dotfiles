@@ -50,9 +50,13 @@ button:hover {
 
 #workspaces button {
   padding: 0 4px;
+  color: white; 
   /*    background-color: rgba(0,0,0,0.3); */
 }
 
+#workspaces button.active {
+  color: #c9545d;
+}
 #workspaces button:hover {
 }
 

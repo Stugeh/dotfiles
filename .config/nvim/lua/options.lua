@@ -1,5 +1,6 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+vim.g.netrw_banner = 0
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.opt.termguicolors = true
@@ -21,6 +22,8 @@ vim.o.termguicolors = true
 vim.o.scrolloff = 40
 vim.opt.relativenumber = true
 vim.opt.guifont = 'monospace:h17' -- the font used in graphical neovim applications
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
 
 vim.opt.fillchars = vim.opt.fillchars + 'eob: '
 vim.opt.fillchars:append {

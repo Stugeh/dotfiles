@@ -12,7 +12,8 @@ return {
     },
   },
   config = function()
-    require('telescope').setup {
+    local telescope = require 'telescope'
+    telescope.setup {
       defaults = {
         mappings = {
           i = {
@@ -29,7 +30,8 @@ return {
       },
     }
 
-    pcall(require('telescope').load_extension, 'fzf')
+    pcall(telescope.load_extension, 'fzf')
+    pcall(telescope.load_extension "workspaces")
 
     local function find_git_root()
       local current_file = vim.api.nvim_buf_get_name(0)
@@ -40,7 +42,8 @@ return {
       else
         current_dir = vim.fn.fnamemodify(current_file, ':h')
       end
-      local git_root = vim.fn.systemlist('git -C ' .. vim.fn.escape(current_dir, ' ') .. ' rev-parse --show-toplevel')[1]
+      local git_root = vim.fn.systemlist('git -C ' .. vim.fn.escape(current_dir, ' ') .. ' rev-parse --show-toplevel')
+      [1]
       if vim.v.shell_error ~= 0 then
         print 'Not a git repository. Searching on current working directory'
         return cwd

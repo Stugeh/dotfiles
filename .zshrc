@@ -1,4 +1,3 @@
-
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -8,12 +7,20 @@ fi
 export DOTNET_ROOT="$HOME/dotnet"
 export GCM_CREDENTIAL_STORE="gpg"
 
-export PATH=$HOME/bin:/usr/local/bin:~/.local/bin:~/local/bin:$PATH:/home/tuukka/.cargo/bin:$HOME/.dotnet/tools:$HOME/apps/Rider/bin:$HOME/.config/scripts
+export PATH=$HOME/bin:/usr/local/bin:~/.local/bin:~/local/bin:$PATH:/home/tuukka/.cargo/bin:$HOME/.dotnet/tools:$HOME/apps/Rider/bin:$HOME/.config/scripts:/usr/local:$HOME/repos/azure-functions-cli:/usr/bin
 set -o vi
 
+alias api="cd ~/hilma/Hilma/Hilma.Api"
+alias web="cd ~/hilma/Hilma/Hilma.Web"
+alias hilma="cd ~/hilma/Hilma"
+alias espd="cd ~/hilma/espd"
+alias search="cd ~/hilma/Hilma/Hilma.Search"
+alias tendering="cd ~/hilma/hilma-tendering"
+alias azStart="azurite --silent --location ~/.microsoft/azurite/hilmaApi --debug c ~/.microsoft/azurite/hilmaApi/debug.log"
+
+alias qmake="/home/tuukka/Qt/6.7.1/gcc_64/bin/qmake"
 alias lock="~/.config/scripts/idle.sh"
 alias graph="git-igitt"
-alias azStart="azurite --silent --location ~/.microsoft/azurite/hilmaApi --debug c ~/.microsoft/azurite/hilmaApi/debug.log"
 alias hotspot="nmcli d wifi && nmcli d wifi connect \"Tuukka's S23\""
 alias silkkitie="nmcli d wifi && nmcli d wifi connect Silkkitie"
 alias handsome="nmcli d wifi && nmcli d wifi connect Handsome"

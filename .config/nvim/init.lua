@@ -19,6 +19,22 @@ require('lazy').setup({
   'folke/which-key.nvim',
 
   {
+    "kndndrj/nvim-dbee",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+    },
+    build = function()
+      -- Install tries to automatically detect the install method.
+      -- if it fails, try calling it with one of these parameters:
+      --    "curl", "wget", "bitsadmin", "go"
+      require("dbee").install()
+    end,
+    config = function()
+      require("dbee").setup( --[[optional config]])
+    end,
+  },
+
+  {
     'p00f/clangd_extensions.nvim',
     config = function()
       vim.keymap.set('n', '<leader>gs', '<cmd>ClangdSwitchSourceHeader<CR>', { noremap = true, silent = true })
@@ -68,6 +84,8 @@ require('lazy').setup({
 
   require 'plugs.eyeliner',
   require 'plugs.ufo',
+
+  require 'plugs.workspaces',
   -- Tooltips for remembering keybinds
   -- require 'plugs.whichkey',
   --
@@ -114,18 +132,17 @@ require('lazy').setup({
   {
     'pmizio/typescript-tools.nvim',
     dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
-    opts = {},
     config = function()
       require('typescript-tools').setup {
         settings = {
           expose_as_code_action = 'all',
-          tsserver_plugins = {},
-          tsserver_file_preferences = { 'vue', 'ts', 'tsx', 'typescriptreact', 'typescript' },
+          tsserver_plugins = { '@vue/typescript-plugin' },
+          tsserver_file_preferences = { 'vue', 'js', 'ts', 'tsx', 'typescriptreact', 'typescript' },
           tsserver_locale = 'en',
           complete_function_calls = true,
           include_completions_with_insert_text = true,
           -- possible values: ("off"|"all"|"implementations_only"|"references_only")
-          code_lens = 'references_only',
+          code_lens = 'off',
           -- by default code lenses are displayed on all referencable values and for some of you it can
           -- be too much this option reduce count of them by removing member references from lenses
           disable_member_code_lens = true,
